@@ -21,12 +21,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
+        try {
+            Class c = Class.forName("android.os.SystemProperties");
+            Method get = c.getMethod("get", String.class);
+            Log.i("sunmi", "the sn:" + (String) get.invoke(c, "ro.serialno"));
+            Log.i("sunmi", "First four characters:" + (String) get.invoke(c, "ro.serialno"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public void opensettting(View view) {
 
-    public void open(View view) {
         Intent intent = new Intent(Settings.ACTION_SETTINGS);
         startActivity(intent);
     }
+
 }
