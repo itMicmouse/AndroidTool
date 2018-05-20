@@ -5,11 +5,8 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 
-import com.yangyakun.androidtool.scan.ScanGun;
 
 import java.lang.reflect.Method;
 
@@ -34,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
     public void opensettting(View view) {
 
         Intent intent = new Intent(Settings.ACTION_SETTINGS);
+        startActivity(intent);
+    }
+
+    public void openFlexBox(View view) {
+        Intent intent = new Intent(MainActivity.this,FlexboxActivity.class);
         startActivity(intent);
     }
 
