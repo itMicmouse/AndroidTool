@@ -1,4 +1,4 @@
-package com.yangyakun.androidtool;
+package com.yangyakun.androidtool.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+
+import com.yangyakun.androidtool.R;
 
 import java.lang.reflect.Method;
 
