@@ -1,33 +1,66 @@
-<com.google.android.flexbox.FlexboxLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:flexWrap="wrap"
-    app:alignItems="stretch"
-    app:alignContent="stretch" >
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textview1"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:background="@color/colorAccent"
-        app:layout_flexBasisPercent="50%"
-        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="18dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:background="@color/colorPrimary"
-        android:id="@+id/textview2"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:layout_alignSelf="center"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/shape_prescription_medicineclass_false"
+            android:paddingStart="12dp"
+            android:text="科室"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/text_size_24"
+            android:textStyle="bold" />
 
-    <TextView
-        android:background="@drawable/ic_launcher_background"
-        android:id="@+id/textview3"
-        android:layout_width="160dp"
-        android:layout_height="80dp"
-        app:layout_alignSelf="flex_end"
-        />
-</com.google.android.flexbox.FlexboxLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_keshi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="18dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="40dp"
+            android:paddingStart="12dp"
+            android:text="擅长"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/text_size_24"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="40dp"
+            android:paddingStart="12dp"
+            android:text="级别"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/text_size_24"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>
