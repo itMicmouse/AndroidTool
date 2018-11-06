@@ -2,14 +2,10 @@ package com.yangyakun.androidtool.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-
 
 import com.yangyakun.androidtool.R;
 
@@ -40,7 +36,7 @@ public class MainActivity extends Activity {
     }
 
     public void openFlexBox(View view) {
-        Intent intent = new Intent(MainActivity.this,FlexboxActivity.class);
+        Intent intent = new Intent(MainActivity.this, FlexboxActivity.class);
         startActivity(intent);
     }
 

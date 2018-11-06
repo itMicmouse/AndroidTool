@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.yangyakun.androidtool.activity.MainActivity">
 
-    <TextView
-        android:id="@+id/textView2"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="opensettting"
-        android:text="打开设置"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="打开设置" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="openFlexBox"
-        android:text="打开流式布局"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.115"
-        tools:layout_editor_absoluteX="0dp" />
+        android:text="打开流式布局" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
