@@ -17,20 +17,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        try {
-            Class c = Class.forName("android.os.SystemProperties");
-            Method get = c.getMethod("get", String.class);
-            Log.i("sunmi", "the sn:" + (String) get.invoke(c, "ro.serialno"));
-            Log.i("sunmi", "First four characters:" + (String) get.invoke(c, "ro.serialno"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public void opensettting(View view) {
-
         Intent intent = new Intent(Settings.ACTION_SETTINGS);
         startActivity(intent);
     }
@@ -40,4 +29,12 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void openRecycleVIew(View view) {
+        Intent intent = new Intent(MainActivity.this, RecycleViewActivity.class);
+        startActivity(intent);
+    }
+    public void manageMonitor(View view) {
+        Intent intent = new Intent(MainActivity.this, MonitorActivity.class);
+        startActivity(intent);
+    }
 }
