@@ -37,4 +37,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, MonitorActivity.class);
         startActivity(intent);
     }
+
+    public void netTest(View view) {
+        Intent intent = new Intent(MainActivity.this, NEtTestActivity.class);
+        startActivity(intent);
+    }
 }

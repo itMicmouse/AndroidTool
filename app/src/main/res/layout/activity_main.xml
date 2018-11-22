@@ -29,4 +29,10 @@
         android:onClick="manageMonitor"
         android:text="管理性能监控" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="netTest"
+        android:text="网络监测" />
+
 </LinearLayout>

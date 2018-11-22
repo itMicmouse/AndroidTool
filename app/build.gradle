@@ -35,4 +35,8 @@ dependencies {
     implementation 'cn.hikyson.godeye:godeye-toolbox:2.1.1'
 
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
+
+    implementation 'com.github.stealthcopter:AndroidNetworkTools:0.4.0'
+
+    implementation "com.android.support:design:26.1.0"
 }

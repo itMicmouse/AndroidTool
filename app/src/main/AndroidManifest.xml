@@ -3,6 +3,7 @@
     package="com.yangyakun.androidtool">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -26,6 +27,7 @@
         <activity android:name=".activity.RecycleViewActivity"/>
         <activity android:name=".activity.MonitorActivity"/>
         <activity android:name=".activity.RecycleViewDoubleActivity"/>
+        <activity android:name=".activity.NEtTestActivity"/>
     </application>
 
 </manifest>
