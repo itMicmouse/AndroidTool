@@ -34,5 +34,15 @@
         android:layout_height="wrap_content"
         android:onClick="netTest"
         android:text="网络监测" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="mDNS"
+        android:text="组播" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="mAudio"
+        android:text="声音" />
 
 </LinearLayout>

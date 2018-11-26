@@ -3,6 +3,7 @@ package com.yangyakun.androidtool.app;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.os.Handler;
 
 import cn.hikyson.android.godeye.toolbox.crash.CrashFileProvider;
 import cn.hikyson.android.godeye.toolbox.rxpermission.RxPermissionRequest;
@@ -21,10 +22,22 @@ import cn.hikyson.godeye.core.installconfig.ThreadConfig;
 import cn.hikyson.godeye.core.installconfig.TrafficConfig;
 
 public class BaseApplication extends Application {
+
+    /**
+     * 获取到主线程的handler
+     */
+    private static Handler mMainThreadHanler;
+
+    private static Application mApplication;
+
+
     @Override
     public void onCreate() {
         super.onCreate();
         GodEye.instance().init(this);
+
+        mMainThreadHanler = new Handler();
+        mApplication = this;
 
         if (isMainProcess(this)) {//安装只能在主进程
             GodEye.instance()
@@ -57,5 +70,13 @@ public class BaseApplication extends Application {
             }
         }
         return application.getPackageName().equals(processName);
+    }
+
+    public static Handler getMainThreadHandler() {
+        return mMainThreadHanler;
+    }
+
+    public static Application getInstance() {
+        return mApplication;
     }
 }

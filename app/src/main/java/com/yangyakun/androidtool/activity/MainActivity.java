@@ -42,4 +42,13 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, NEtTestActivity.class);
         startActivity(intent);
     }
+
+    public void mDNS(View view) {
+        Intent intent = new Intent(MainActivity.this, MDNSActivity.class);
+        startActivity(intent);
+    }
+    public void mAudio(View view) {
+        Intent intent = new Intent(MainActivity.this, AudioManagerActivity.class);
+        startActivity(intent);
+    }
 }
