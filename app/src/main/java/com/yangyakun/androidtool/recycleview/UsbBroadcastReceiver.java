@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-public class USBBroadcastReceiver extends BroadcastReceiver {
+/**
+ * @author 92155
+ */
+public class UsbBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
