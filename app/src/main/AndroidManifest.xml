@@ -3,17 +3,23 @@
     package="com.yangyakun.androidtool">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:required="true" android:name="android.permission.INTERNET"/>
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        android:required="true" />
+    <!-- 外部存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.usb.host" />
 
     <application
+        android:name=".app.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".app.BaseApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity"
+        <activity
+            android:name=".activity.MainActivity"
             android:screenOrientation="userPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,13 +29,33 @@
                 <!--<category android:name="android.intent.category.DEFAULT"/>-->
             </intent-filter>
         </activity>
-        <activity android:name=".activity.FlexboxActivity"/>
-        <activity android:name=".activity.RecycleViewActivity"/>
-        <activity android:name=".activity.MonitorActivity"/>
-        <activity android:name=".activity.RecycleViewDoubleActivity"/>
-        <activity android:name=".activity.NEtTestActivity"/>
-        <activity android:name=".activity.MDNSActivity"/>
-        <activity android:name=".activity.AudioManagerActivity"/>
+        <activity android:name=".activity.FlexboxActivity" />
+        <activity android:name=".activity.RecycleViewActivity" />
+        <activity android:name=".activity.MonitorActivity" />
+        <activity android:name=".activity.RecycleViewDoubleActivity" />
+        <activity android:name=".activity.NEtTestActivity" />
+        <activity android:name=".activity.MDNSActivity" />
+        <activity android:name=".activity.AudioManagerActivity" />
+
+        <service android:name=".service.CountService" />
+        <activity android:name=".activity.DBActivity" />
+
+        <receiver android:name=".recycleview.USBBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
+                <data android:scheme="file"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED"/>
+                <data android:scheme="file"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

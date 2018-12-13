@@ -5,6 +5,9 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
+import com.yangyakun.androidtool.db.DBHelper;
+import com.yangyakun.androidtool.db.DBManager;
+
 import cn.hikyson.android.godeye.toolbox.crash.CrashFileProvider;
 import cn.hikyson.android.godeye.toolbox.rxpermission.RxPermissionRequest;
 import cn.hikyson.godeye.core.GodEye;
@@ -20,6 +23,7 @@ import cn.hikyson.godeye.core.installconfig.RamConfig;
 import cn.hikyson.godeye.core.installconfig.SmConfig;
 import cn.hikyson.godeye.core.installconfig.ThreadConfig;
 import cn.hikyson.godeye.core.installconfig.TrafficConfig;
+import io.github.skyhacker2.sqliteonweb.SQLiteOnWeb;
 
 public class BaseApplication extends Application {
 
@@ -54,6 +58,10 @@ public class BaseApplication extends Application {
                     .install(new ThreadConfig())
                     .install(new TrafficConfig());
         }
+
+        DBManager.initializeInstance(new DBHelper(mApplication));
+
+        SQLiteOnWeb.init(this).start();
     }
 
     /**

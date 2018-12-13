@@ -39,4 +39,7 @@ dependencies {
     implementation 'com.github.stealthcopter:AndroidNetworkTools:0.4.0'
 
     implementation "com.android.support:design:26.1.0"
+
+    debugCompile 'io.github.skyhacker2:sqliteonweb:1.0.2'
+    releaseCompile 'io.github.skyhacker2:sqliteonweb-no-op:1.0.2'
 }
