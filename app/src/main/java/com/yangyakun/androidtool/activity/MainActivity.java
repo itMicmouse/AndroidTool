@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 
 import com.yangyakun.androidtool.R;
 
-import java.lang.reflect.Method;
-
+/**
+ * @author 92155
+ */
 public class MainActivity extends Activity {
 
     @Override
@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
     }
 
     public void mDNS(View view) {
-        Intent intent = new Intent(MainActivity.this, MDNSActivity.class);
+        Intent intent = new Intent(MainActivity.this, MdnsActivity.class);
         startActivity(intent);
     }
     public void mAudio(View view) {

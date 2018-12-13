@@ -22,7 +22,10 @@ import com.yangyakun.androidtool.utils.NsdHelper;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class MDNSActivity extends AppCompatActivity {
+/**
+ * @author 92155
+ */
+public class MdnsActivity extends AppCompatActivity {
 
     NsdHelper mNsdHelper;
 
@@ -33,7 +36,6 @@ public class MDNSActivity extends AppCompatActivity {
 
     ChatConnection mConnection;
 
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,17 +120,6 @@ public class MDNSActivity extends AppCompatActivity {
             mNsdHelper.discoverServices();
         }
     }
-
-
-    // For KitKat and earlier releases, it is necessary to remove the
-    // service registration when the application is stopped.  There's
-    // no guarantee that the onDestroy() method will be called (we're
-    // killable after onStop() returns) and the NSD service won't remove
-    // the registration for us if we're killed.
-
-    // In L and later, NsdService will automatically unregister us when
-    // our connection goes away when we're killed, so this step is
-    // optional (but recommended).
 
     @Override
     protected void onStop() {

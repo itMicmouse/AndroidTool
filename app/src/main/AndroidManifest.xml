@@ -34,7 +34,7 @@
         <activity android:name=".activity.MonitorActivity" />
         <activity android:name=".activity.RecycleViewDoubleActivity" />
         <activity android:name=".activity.NEtTestActivity" />
-        <activity android:name=".activity.MDNSActivity" />
+        <activity android:name=".activity.MdnsActivity" />
         <activity android:name=".activity.AudioManagerActivity" />
 
         <service android:name=".service.CountService" />
