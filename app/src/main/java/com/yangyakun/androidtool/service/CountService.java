@@ -9,7 +9,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.yangyakun.androidtool.db.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.DBManager;
 import com.yangyakun.androidtool.db.domain.Commondity;
 import com.yangyakun.androidtool.db.domain.LableDetail;
 import com.yangyakun.androidtool.db.domain.LableMain;
@@ -45,20 +45,49 @@ public class CountService extends Service {
             public void run() {
                 long start = System.currentTimeMillis();
                 Patient patient = new Patient();
+                patient.doMain(100000);
+                long end = System.currentTimeMillis();
+
+                System.out.println("患者耗时："+(end-start));
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                long start = System.currentTimeMillis();
                 LableMain lableMain = new LableMain();
                 LableDetail lableDetail = new LableDetail();
-                Prescription prescription = new Prescription();
-                Commondity commondity = new Commondity();
-                patient.doMain(100000);
                 lableMain.doMain(10000);
                 lableDetail.doMain(100000);
-                commondity.doMain(100000);
+                long end = System.currentTimeMillis();
+
+                System.out.println("标签耗时："+(end-start));
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                long start = System.currentTimeMillis();
+                Prescription prescription = new Prescription();
                 prescription.doMain(100000,10);
                 long end = System.currentTimeMillis();
 
-                System.out.println("耗时："+(end-start));
+                System.out.println("处方耗时："+(end-start));
             }
         }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                long start = System.currentTimeMillis();
+                Commondity commondity = new Commondity();
+                commondity.doMain(100000);
+                long end = System.currentTimeMillis();
+                System.out.println("药品耗时："+(end-start));
+            }
+        }).start();
+
 
     }
 

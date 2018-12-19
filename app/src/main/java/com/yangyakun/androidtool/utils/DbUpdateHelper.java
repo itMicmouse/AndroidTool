@@ -1,4 +1,4 @@
-package com.yangyakun.androidtool.db;
+package com.yangyakun.androidtool.utils;
 
 import java.util.Iterator;
 import java.util.Map;

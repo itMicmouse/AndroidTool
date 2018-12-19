@@ -3,16 +3,17 @@ package com.yangyakun.androidtool.db.domain;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
-import com.yangyakun.androidtool.db.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.DBManager;
 import com.yangyakun.androidtool.db.db.PrescriptionDetailsDTO2;
 import com.yangyakun.androidtool.db.db.PrescriptionMainDTO;
+import com.yangyakun.androidtool.db.dbmanage.PbPrescriptionDBManager;
 
 public class Prescription {
     public void doMain(int magnitude, int number) {
         SQLiteDatabase db = null;
         try {
 
-            db = DBManager.getInstance().openDatabase();
+            db = PbPrescriptionDBManager.getInstance().openDatabase();
 //            db.beginTransaction();
             // 主表
             String sql_insert = " replace into pb_prescription_main (id ,patientId, diagnoseDate, height, temperature, weight, systolicPressure, diastolicPressure, complaint, illHistory, diagnose, " +
@@ -118,7 +119,7 @@ public class Prescription {
         } finally {
             if (null != db) {
 //                db.endTransaction();
-                DBManager.getInstance().closeDatabase();
+                PbPrescriptionDBManager.getInstance().closeDatabase();
             }
         }
     }

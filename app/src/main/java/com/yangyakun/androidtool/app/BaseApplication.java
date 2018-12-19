@@ -5,8 +5,16 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
-import com.yangyakun.androidtool.db.DBHelper;
-import com.yangyakun.androidtool.db.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.PbCommodityMainDBManager;
+import com.yangyakun.androidtool.db.dbmanage.PbPatientDBManager;
+import com.yangyakun.androidtool.db.dbmanage.PbPrescriptionDBManager;
+import com.yangyakun.androidtool.db.dbmanage.SysLabelDBManager;
+import com.yangyakun.androidtool.db.muldb.DBHelper;
+import com.yangyakun.androidtool.db.dbmanage.DBManager;
+import com.yangyakun.androidtool.db.muldb.PbCommodityMain;
+import com.yangyakun.androidtool.db.muldb.PbPatient;
+import com.yangyakun.androidtool.db.muldb.PbPrescription;
+import com.yangyakun.androidtool.db.muldb.SysLabel;
 
 import cn.hikyson.android.godeye.toolbox.crash.CrashFileProvider;
 import cn.hikyson.android.godeye.toolbox.rxpermission.RxPermissionRequest;
@@ -60,6 +68,10 @@ public class BaseApplication extends Application {
         }
 
         DBManager.initializeInstance(new DBHelper(mApplication));
+        PbCommodityMainDBManager.initializeInstance(new PbCommodityMain(mApplication));
+        PbPatientDBManager.initializeInstance(new PbPatient(mApplication));
+        PbPrescriptionDBManager.initializeInstance(new PbPrescription(mApplication));
+        SysLabelDBManager.initializeInstance(new SysLabel(mApplication));
 
         SQLiteOnWeb.init(this).start();
     }

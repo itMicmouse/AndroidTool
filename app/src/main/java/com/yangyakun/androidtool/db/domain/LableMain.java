@@ -3,17 +3,17 @@ package com.yangyakun.androidtool.db.domain;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
-import com.yangyakun.androidtool.db.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.SysLabelDBManager;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class LableMain {
     public void doMain(int magnitude) {
         SQLiteDatabase db = null;
         try {
-            db = DBManager.getInstance().openDatabase();
+            db = SysLabelDBManager.getInstance().openDatabase();
 //            db.beginTransaction();
 
             ArrayList<String> needdelete = new ArrayList<>();
@@ -39,7 +39,7 @@ public class LableMain {
         } finally {
             if (null != db) {
 //                db.endTransaction();
-                DBManager.getInstance().closeDatabase();
+                SysLabelDBManager.getInstance().closeDatabase();
             }
         }
     }

@@ -1,8 +1,10 @@
-package com.yangyakun.androidtool.db;
+package com.yangyakun.androidtool.db.muldb;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.yangyakun.androidtool.utils.DbUpdateHelper;
 
 
 public class DBHelper extends SQLiteOpenHelper {

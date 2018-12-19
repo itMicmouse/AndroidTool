@@ -3,7 +3,8 @@ package com.yangyakun.androidtool.db.domain;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
-import com.yangyakun.androidtool.db.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.PbCommodityMainDBManager;
 
 import java.util.UUID;
 
@@ -11,7 +12,7 @@ public class Commondity {
     public void doMain(int magnitude) {
         SQLiteDatabase db = null;
         try {
-            db = DBManager.getInstance().openDatabase();
+            db = PbCommodityMainDBManager.getInstance().openDatabase();
 //            db.beginTransaction();
             // 主表
             String sql_insert = " replace into pb_commodity_main (id, commodityCategory, commodityCode, commodityName, commodityShortName, commonNum, simpleName, simpleShortName, " +
@@ -69,7 +70,7 @@ public class Commondity {
         } finally {
             if (null != db) {
 //                db.endTransaction();
-                DBManager.getInstance().closeDatabase();
+                PbCommodityMainDBManager.getInstance().closeDatabase();
             }
         }
     }

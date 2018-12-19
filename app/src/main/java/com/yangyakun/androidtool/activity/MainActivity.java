@@ -51,4 +51,8 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, AudioManagerActivity.class);
         startActivity(intent);
     }
+    public void mDb(View view) {
+        Intent intent = new Intent(MainActivity.this, DBActivity.class);
+        startActivity(intent);
+    }
 }

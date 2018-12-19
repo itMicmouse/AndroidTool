@@ -3,7 +3,8 @@ package com.yangyakun.androidtool.db.domain;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
-import com.yangyakun.androidtool.db.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.SysLabelDBManager;
 
 import java.util.UUID;
 
@@ -11,7 +12,7 @@ public class LableDetail {
     public void doMain(int magnitude) {
         SQLiteDatabase db = null;
         try {
-            db = DBManager.getInstance().openDatabase();
+            db = SysLabelDBManager.getInstance().openDatabase();
 //            db.beginTransaction();
             // 标签附表
             String sql_insert1 = " replace into sys_label_details (id, clinicId, labelId, groupObjId, sort , base_version, status ) "
@@ -35,7 +36,7 @@ public class LableDetail {
         } finally {
             if (null != db) {
 //                db.endTransaction();
-                DBManager.getInstance().closeDatabase();
+                SysLabelDBManager.getInstance().closeDatabase();
             }
         }
     }

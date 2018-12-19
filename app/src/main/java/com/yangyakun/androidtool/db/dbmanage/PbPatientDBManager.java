@@ -1,20 +1,23 @@
-package com.yangyakun.androidtool.db;
-
-import java.util.concurrent.atomic.AtomicInteger;
+package com.yangyakun.androidtool.db.dbmanage;
 
 import android.database.sqlite.SQLiteDatabase;
 
-public class DBManager {
+import com.yangyakun.androidtool.db.muldb.DBHelper;
+import com.yangyakun.androidtool.db.muldb.PbPatient;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class PbPatientDBManager {
 	
 	private AtomicInteger mOpenCounter = new AtomicInteger();
 	
-	private static DBManager instance;
-	private static DBHelper mdbHelper;
+	private static PbPatientDBManager instance;
+	private static PbPatient mdbHelper;
 	private SQLiteDatabase mdb;
 	 
-	public static synchronized DBManager initializeInstance(DBHelper helper) {
+	public static synchronized PbPatientDBManager initializeInstance(PbPatient helper) {
 		if (instance == null) {
-			instance = new DBManager();
+			instance = new PbPatientDBManager();
 			mdbHelper = helper;
 		}
 		
@@ -23,9 +26,9 @@ public class DBManager {
 	 
 
 	
-	public static synchronized DBManager getInstance() {
+	public static synchronized PbPatientDBManager getInstance() {
 		if (instance == null) {
-			throw new IllegalStateException(DBManager.class.getSimpleName() +
+			throw new IllegalStateException(PbPatientDBManager.class.getSimpleName() +
 				" is not initialized, call initializeInstance(..) method first.");
 		}
 	 
