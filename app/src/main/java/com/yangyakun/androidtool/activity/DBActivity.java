@@ -12,16 +12,30 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.yangyakun.androidtool.R;
 import com.yangyakun.androidtool.service.CountService;
 import com.yangyakun.androidtool.utils.FileUtils;
+import com.yangyakun.androidtool.utils.MarqueeText;
 
 public class DBActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db);
+
+        MarqueeText viewById = findViewById(R.id.tv_device_name);
+        viewById.setSelected(true);
+        viewById.startScroll();
+        MarqueeText tv_device_name1 = findViewById(R.id.tv_device_name1);
+        tv_device_name1.setSelected(true);
+        tv_device_name1.startScroll();
+
+        TextView tv_device_name3 = findViewById(R.id.tv_device_name3);
+        tv_device_name3.setSelected(true);
+        TextView tv_device_name4 = findViewById(R.id.tv_device_name4);
+        tv_device_name4.setSelected(true);
 
         Intent intent = new Intent(DBActivity.this, CountService.class);
         /** 进入Activity开始服务 */
@@ -33,13 +47,15 @@ public class DBActivity extends Activity {
     }
 
     private void addNote() {
-        if(countService!=null){
+        if (countService != null) {
             countService.startInsertData();
         }
     }
 
 
-    /** 参数设置 */
+    /**
+     * 参数设置
+     */
     CountService countService;
 
     private ServiceConnection conn = new ServiceConnection() {
@@ -67,7 +83,7 @@ public class DBActivity extends Activity {
     }
 
     public void getCount(View view) {
-        if(countService!=null){
+        if (countService != null) {
             countService.testSql();
         }
     }
@@ -75,13 +91,12 @@ public class DBActivity extends Activity {
     public void dataCopy(View view) {
 
         String from = "/data/data/com.yangyakun.androidtool/databases/c.db";
-        String target = Environment.getExternalStorageDirectory().getAbsolutePath()+"/c.db";
-//        FileUtils.copyFile(target,from,false);
-        FileUtils.copyFile(from,target,false);
+        String target = Environment.getExternalStorageDirectory().getAbsolutePath() + "/c.db";
+        FileUtils.copyFile(from, target, false);
     }
 
     public void dataTemp(View view) {
-        if(countService!=null){
+        if (countService != null) {
             countService.startInsertDataTemp();
         }
     }
