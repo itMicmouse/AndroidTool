@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:showIn="@layout/activity_main">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,6 +31,41 @@
                 android:inputType="textNoSuggestions" />
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_ip_route"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="路由"
+                android:inputType="textNoSuggestions" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_ip_prefix_length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="前缀长度"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_ip_dns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="dns 以;分割"
+                android:inputType="textNoSuggestions" />
+        </android.support.design.widget.TextInputLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,38 +77,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="ping" />
+            <Button
+                android:id="@+id/btn_set_ip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="设置网络" />
 
             <Button
                 android:id="@+id/wolButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wake-On-Lan" />
-
-            <Button
-                android:id="@+id/portScanButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Port Scan" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/subnetDevicesButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Subnet Devices" />
-            <Button
-                android:id="@+id/subnetclear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clearText"
-                android:text="Subnet Devices" />
-
+                android:text="clean Log" />
         </LinearLayout>
 
     </LinearLayout>

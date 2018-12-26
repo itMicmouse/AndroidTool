@@ -2,12 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yangyakun.androidtool">
 
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission
         android:name="android.permission.INTERNET"
         android:required="true" />
     <!-- 外部存储 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.usb.host" />
 
     <application
@@ -23,10 +25,11 @@
             android:screenOrientation="userPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
 
-                <!--<category android:name="android.intent.category.HOME"/>-->
-                <!--<category android:name="android.intent.category.DEFAULT"/>-->
+                <!-- <category android:name="android.intent.category.HOME"/> -->
+                <!-- <category android:name="android.intent.category.DEFAULT"/> -->
             </intent-filter>
         </activity>
         <activity android:name=".activity.FlexboxActivity" />
@@ -38,24 +41,30 @@
         <activity android:name=".activity.AudioManagerActivity" />
 
         <service android:name=".service.CountService" />
+
         <activity android:name=".activity.DBActivity" />
 
         <receiver android:name=".recycleview.UsbBroadcastReceiver">
             <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"/>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
-                <data android:scheme="file"/>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+
+                <data android:scheme="file" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.MEDIA_UNMOUNTED"/>
-                <data android:scheme="file"/>
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+
+                <data android:scheme="file" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".activity.TracerouteActivity"></activity>
+        <activity android:name=".activity.TracerouteLinuxActivity"></activity>
     </application>
 
 </manifest>

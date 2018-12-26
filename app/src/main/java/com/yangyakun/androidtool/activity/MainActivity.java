@@ -55,4 +55,12 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, DBActivity.class);
         startActivity(intent);
     }
+    public void maketraceroute(View view) {
+        Intent intent = new Intent(MainActivity.this, TracerouteActivity.class);
+        startActivity(intent);
+    }
+    public void makeTracerouteLinux(View view) {
+        Intent intent = new Intent(MainActivity.this, TracerouteLinuxActivity.class);
+        startActivity(intent);
+    }
 }
