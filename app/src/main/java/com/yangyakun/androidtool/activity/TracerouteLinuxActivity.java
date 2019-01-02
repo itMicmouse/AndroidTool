@@ -38,7 +38,7 @@ public class TracerouteLinuxActivity extends AppCompatActivity {
     private TextView tv_ips;
 
     @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -51,10 +51,10 @@ public class TracerouteLinuxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_traceroute_linux);
         /*初始化控件*/
-        et_cmd =  findViewById(R.id.et_cmd);
-        tv_result =  findViewById(R.id.tv_result);
-        tv_ips =  findViewById(R.id.tv_ips);
-        et_host =  findViewById(R.id.et_host);
+        et_cmd = findViewById(R.id.et_cmd);
+        tv_result = findViewById(R.id.tv_result);
+        tv_ips = findViewById(R.id.tv_ips);
+        et_host = findViewById(R.id.et_host);
         /* 获取app安装路径 */
         app_path = getApplicationContext().getFilesDir().getAbsolutePath();
     }
@@ -66,22 +66,27 @@ public class TracerouteLinuxActivity extends AppCompatActivity {
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
-            case R.id.copy_busybox: /* 拷贝busybox可执行文件 */
+            //拷贝busybox可执行文件
+            case R.id.copy_busybox:
                 varifyFile(getApplicationContext(), "busybox");
                 break;
-            case R.id.copy_traceroute:/* 拷贝traceroute可执行文件 */
+            //拷贝traceroute可执行文件
+            case R.id.copy_traceroute:
                 varifyFile(getApplicationContext(), "traceroute");
                 break;
-            case R.id.exe_busybox:/* 将busybox命令添加到Editext中 */
+            /* 将busybox命令添加到Editext中 */
+            case R.id.exe_busybox:
                 String cmd = "." + app_path + "/busybox";
                 System.out.println(et_cmd);
                 et_cmd.setText(cmd);
                 break;
-            case R.id.exe_traceroute:/* 将traceroute命令添加到Editext中 */
+            /* 将traceroute命令添加到Editext中 */
+            case R.id.exe_traceroute:
                 cmd = "." + app_path + "/traceroute";
                 et_cmd.setText(cmd);
                 break;
-            case R.id.exe: /* 执行Editext中的命令 */
+            /* 执行Editext中的命令 */
+            case R.id.exe:
                 cmd = et_cmd.getText().toString();
                 /* 执行脚本命令 */
                 List<String> results = exe(cmd);
@@ -92,14 +97,15 @@ public class TracerouteLinuxActivity extends AppCompatActivity {
                 }
                 tv_result.setText(result);
                 break;
-            case R.id.resolve:/* 将traceroute命令添加到Editext中 */
+            /* 将traceroute命令添加到Editext中 */
+            case R.id.resolve:
                 final String hostName = et_host.getText().toString();
-                if(hostName.isEmpty()){
+                if (hostName.isEmpty()) {
                     DesityUtil.showToast("请填写域名");
                     return;
                 }
 
-                new Thread(){
+                new Thread() {
                     @Override
                     public void run() {
                         final String[] strings = parseHostGetIPAddress(hostName);
@@ -108,7 +114,7 @@ public class TracerouteLinuxActivity extends AppCompatActivity {
                             public void run() {
                                 StringBuilder stringBuilder = new StringBuilder();
                                 for (String string : strings) {
-                                    stringBuilder.append(string+":");
+                                    stringBuilder.append(string + ":");
                                 }
                                 tv_ips.setText(stringBuilder);
                             }
@@ -170,6 +176,7 @@ public class TracerouteLinuxActivity extends AppCompatActivity {
 
     /**
      * 解析域名获取IP数组
+     *
      * @param host
      * @return
      */
