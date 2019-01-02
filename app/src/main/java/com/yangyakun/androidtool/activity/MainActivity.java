@@ -7,6 +7,7 @@ import android.provider.Settings;
 import android.view.View;
 
 import com.yangyakun.androidtool.R;
+import com.yangyakun.androidtool.file.FileActivity;
 
 /**
  * @author 92155
@@ -66,6 +67,11 @@ public class MainActivity extends Activity {
 
     public void makeWifiSetting(View view) {
         Intent intent = new Intent(MainActivity.this, WifiSetting.class);
+        startActivity(intent);
+    }
+
+    public void makeFileSetting(View view) {
+        Intent intent = new Intent(MainActivity.this, FileActivity.class);
         startActivity(intent);
     }
 }

@@ -5,4 +5,21 @@
     <string name="discover">Discover</string>
     <string name="register">Register</string>
     <string name="send">Send</string>
+
+    <string-array name="directories">
+        <item>ALARMS</item>
+        <item>DCIM</item>
+        <item>DOCUMENTS</item>
+        <item>DOWNLOADS</item>
+        <item>MOVIES</item>
+        <item>MUSIC</item>
+        <item>NOTIFICATIONS</item>
+        <item>PICTURES</item>
+        <item>PODCASTS</item>
+        <item>RINGTONES</item>
+    </string-array>
+    <string name="primary_volume_description">Internal shared storage</string>
+    <string name="open_directory">Open</string>
+    <string name="selected_directory">Selected directory:\ </string>
+    <string name="nothing_in_directory">Nothing in the directory</string>
 </resources>

@@ -67,6 +67,7 @@
         <activity android:name=".activity.TracerouteLinuxActivity" />
         <activity android:name=".activity.EmailActivity"></activity>
         <activity android:name=".activity.WifiSetting"/>
+        <activity android:name=".file.FileActivity"/>
     </application>
 
 </manifest>

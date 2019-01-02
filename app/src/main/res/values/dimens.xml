@@ -11,4 +11,8 @@
     <dimen name="text_size_40">40sp</dimen>
     <dimen name="text_size_46">46sp</dimen>
     <dimen name="text_size_47">47sp</dimen>
+
+    <dimen name="directory_item_height">72dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
 </resources>

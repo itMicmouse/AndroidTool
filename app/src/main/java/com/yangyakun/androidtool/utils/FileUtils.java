@@ -108,7 +108,6 @@ public class FileUtils {
 				e.printStackTrace();
 			}
 		}
-		Debug.startMethodTracing("com.yangyakun.androidtool");
 		if (!srcFile.exists() || !srcFile.isFile()) {
 			return false;
 		}
@@ -133,7 +132,6 @@ public class FileUtils {
 			IOUtils.close(out);
 			IOUtils.close(in);
 		}
-		Debug.stopMethodTracing();
 		return true;
 	}
 
