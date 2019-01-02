@@ -53,15 +53,23 @@
         android:layout_height="wrap_content"
         android:onClick="mDb"
         android:text="数据库" />
-   <Button
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="maketraceroute"
         android:text="Traceroute" />
- <Button
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="makeTracerouteLinux"
         android:text="迁移LInux" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="makeWifiSetting"
+        android:text="设置wifi" />
 
 </LinearLayout>

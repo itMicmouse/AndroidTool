@@ -63,4 +63,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, TracerouteLinuxActivity.class);
         startActivity(intent);
     }
+
+    public void makeWifiSetting(View view) {
+        Intent intent = new Intent(MainActivity.this, WifiSetting.class);
+        startActivity(intent);
+    }
 }

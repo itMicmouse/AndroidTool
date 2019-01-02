@@ -63,8 +63,10 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.TracerouteActivity"></activity>
-        <activity android:name=".activity.TracerouteLinuxActivity"></activity>
+        <activity android:name=".activity.TracerouteActivity" />
+        <activity android:name=".activity.TracerouteLinuxActivity" />
+        <activity android:name=".activity.EmailActivity"></activity>
+        <activity android:name=".activity.WifiSetting"/>
     </application>
 
 </manifest>
