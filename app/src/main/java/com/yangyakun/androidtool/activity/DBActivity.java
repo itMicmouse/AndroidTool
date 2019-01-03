@@ -10,6 +10,7 @@ import android.os.Debug;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -18,6 +19,8 @@ import com.yangyakun.androidtool.R;
 import com.yangyakun.androidtool.service.CountService;
 import com.yangyakun.androidtool.utils.FileUtils;
 import com.yangyakun.androidtool.utils.MarqueeText;
+
+import java.io.File;
 
 public class DBActivity extends Activity {
     @Override
@@ -91,8 +94,12 @@ public class DBActivity extends Activity {
     public void dataCopy(View view) {
 
         String from = "/data/data/com.yangyakun.androidtool/databases/c.db";
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            File dataDir = getDataDir();
+        }
+        File databasePath = getDatabasePath("c.db");
         String target = Environment.getExternalStorageDirectory().getAbsolutePath() + "/c.db";
-        FileUtils.copyFile(from, target, false);
+        FileUtils.copyFile(databasePath, target, false);
     }
 
     public void dataTemp(View view) {

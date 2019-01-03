@@ -89,10 +89,9 @@ public class FileUtils {
 	}
 
 	/** 复制文件，可以选择是否删除源文件 */
-	public static boolean copyFile(String srcPath, String destPath, boolean deleteSrc) {
-		File srcFile = new File(srcPath);
+	public static boolean copyFile(File srcPath, String destPath, boolean deleteSrc) {
 		File destFile = new File(destPath);
-		return copyFile(srcFile, destFile, deleteSrc);
+		return copyFile(srcPath, destFile, deleteSrc);
 	}
 
 	/** 复制文件，可以选择是否删除源文件 */
@@ -108,9 +107,9 @@ public class FileUtils {
 				e.printStackTrace();
 			}
 		}
-		if (!srcFile.exists() || !srcFile.isFile()) {
-			return false;
-		}
+//		if (!srcFile.exists() || !srcFile.isFile()) {
+//			return false;
+//		}
 		InputStream in = null;
 		OutputStream out = null;
 		try {

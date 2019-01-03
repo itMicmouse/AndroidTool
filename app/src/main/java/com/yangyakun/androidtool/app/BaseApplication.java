@@ -3,7 +3,9 @@ package com.yangyakun.androidtool.app;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
 import android.os.Handler;
+import android.os.StrictMode;
 
 import com.yangyakun.androidtool.db.dbmanage.PbCommodityMainDBManager;
 import com.yangyakun.androidtool.db.dbmanage.PbPatientDBManager;
@@ -74,6 +76,11 @@ public class BaseApplication extends Application {
         SysLabelDBManager.initializeInstance(new SysLabel(mApplication));
 
         SQLiteOnWeb.init(this).start();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+        }
     }
 
     /**
