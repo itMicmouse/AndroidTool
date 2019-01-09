@@ -99,7 +99,7 @@ public class BaseApplication extends Application {
         return application.getPackageName().equals(processName);
     }
 
-    public static Handler getMainThreadHandler() {
+    public static Handler getMainThreadHandlerApp   () {
         return mMainThreadHanler;
     }
 

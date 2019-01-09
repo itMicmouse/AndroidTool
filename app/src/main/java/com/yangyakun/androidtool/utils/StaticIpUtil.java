@@ -26,22 +26,6 @@ public class StaticIpUtil {
         mContext = context;
     }
 
-//    public void getNetworkInformation() {
-//        WifiManager mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
-//        int ipAddress = mWifiManager.getConnectionInfo().getIpAddress();
-//        Constant.IP = intToIp(ipAddress);
-//        long getwayIpS = mWifiManager.getDhcpInfo().gateway;
-//        Constant.gateway = long2ip(getwayIpS);
-//        // 注意要加\\,要不出不来,yeah
-//        String[] IPS = Constant.IP.split("\\.");
-//        Constant.IP = IPS[0] + "." + IPS[1] + "." + IPS[2] + "." + Constant.IPLast;
-//        Constant.isConnectSocket = IPS[0] + "." + IPS[1] + "." + IPS[2] + "." + Constant.IPLast;
-//        String zeroIP = "0" + "." + "0" + "." + "0" + "." + Constant.IPLast;
-//        String equalIP = IPS[0] + "." + IPS[1] + "." + IPS[2] + "." + IPS[3];
-//        if (!Constant.IP.equals(zeroIP) && !Constant.IP.equals(equalIP)) {
-//            setIpWithTfiStaticIp(false, Constant.IP, Constant.prefix, Constant.dns1, Constant.gateway);
-//        }
-//    }
 
     /**
      * 网关 。

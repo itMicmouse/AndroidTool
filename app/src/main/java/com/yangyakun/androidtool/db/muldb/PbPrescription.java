@@ -4,9 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.yangyakun.androidtool.base.SQLiteSDCardHelper;
 import com.yangyakun.androidtool.utils.DbUpdateHelper;
 
-public class PbPrescription extends SQLiteOpenHelper {
+public class PbPrescription extends SQLiteSDCardHelper {
 
     public static final String NAME = "prescription.db";
     private static final int VERSION = 15;
@@ -14,7 +15,7 @@ public class PbPrescription extends SQLiteOpenHelper {
     public static final String T_ID = "id";
 
     public PbPrescription(Context context) {
-        super(context, NAME, null, VERSION);
+        super(context, NAME, context.getExternalFilesDir("").getAbsolutePath(), VERSION);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class DesityUtil {
      * @param msg 要显示的信息
      */
     public static void showToast(final Context context, final String msg) {
-        BaseApplication.getMainThreadHandler().post(new Runnable() {
+        BaseApplication.getMainThreadHandlerApp().post(new Runnable() {
             @Override
             public void run() {
                 if (mToast == null) {
@@ -34,7 +34,7 @@ public class DesityUtil {
         });
     }
     public static void showToast(final String msg) {
-        BaseApplication.getMainThreadHandler().post(new Runnable() {
+        BaseApplication.getMainThreadHandlerApp().post(new Runnable() {
             @Override
             public void run() {
                 if (mToast == null) {

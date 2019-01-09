@@ -4,10 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.yangyakun.androidtool.base.SQLiteSDCardHelper;
 import com.yangyakun.androidtool.utils.DbUpdateHelper;
 
 
-public class DBHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteSDCardHelper {
 
     public static final String NAME = "name.db";
     private static final int VERSION = 15;
@@ -15,7 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String T_ID = "id";
 
     public DBHelper(Context context) {
-        super(context, NAME, null, VERSION);
+        super(context, NAME, context.getExternalFilesDir("").getAbsolutePath(), VERSION);
     }
 
     @Override
