@@ -28,28 +28,12 @@ public class DBActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db);
 
-        MarqueeText viewById = findViewById(R.id.tv_device_name);
-        viewById.setSelected(true);
-        viewById.startScroll();
-        MarqueeText tv_device_name1 = findViewById(R.id.tv_device_name1);
-        tv_device_name1.setSelected(true);
-        tv_device_name1.startScroll();
-
-        TextView tv_device_name3 = findViewById(R.id.tv_device_name3);
-        tv_device_name3.setSelected(true);
-        TextView tv_device_name4 = findViewById(R.id.tv_device_name4);
-        tv_device_name4.setSelected(true);
-
         Intent intent = new Intent(DBActivity.this, CountService.class);
         /** 进入Activity开始服务 */
         bindService(intent, conn, Context.BIND_AUTO_CREATE);
     }
 
     public void opensettting(View view) {
-        addNote();
-    }
-
-    private void addNote() {
         if (countService != null) {
             countService.startInsertData();
         }
@@ -85,26 +69,39 @@ public class DBActivity extends Activity {
         Log.v("MainStadyServics", "out");
     }
 
-    public void getCount(View view) {
+    public void selectSample(View view) {
         if (countService != null) {
-            countService.testSql();
+            countService.selectSample();
         }
     }
 
-    public void dataCopy(View view) {
-
-        String from = "/data/data/com.yangyakun.androidtool/databases/c.db";
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            File dataDir = getDataDir();
+    public void selectSample_1(View view) {
+        if (countService != null) {
+            countService.selectSample_1();
         }
-        File databasePath = getDatabasePath("c.db");
-        String target = Environment.getExternalStorageDirectory().getAbsolutePath() + "/c.db";
-        FileUtils.copyFile(databasePath, target, false);
     }
 
-    public void dataTemp(View view) {
+    public void updateSample_1(View view) {
         if (countService != null) {
-            countService.startInsertDataTemp();
+            countService.updateSample_1();
+        }
+    }
+
+    public void unionSelect(View view) {
+        if (countService != null) {
+            countService.unionSelect();
+        }
+    }
+
+    public void attachSelect(View view) {
+        if (countService != null) {
+            countService.attachSelect();
+        }
+    }
+
+    public void unionSelect_2(View view) {
+        if (countService != null) {
+            countService.unionSelect_2();
         }
     }
 }

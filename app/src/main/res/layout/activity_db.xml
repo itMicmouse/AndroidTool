@@ -11,10 +11,10 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:hint="处方的量级（1个患者100个处方、1个标签10个标签附表、1个处方10个处方附表10个药品）"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="处方的量级（1个患者100个处方、1个标签10个标签附表、1个处方10个处方附表10个药品）" />
 
         <Button
             android:layout_width="wrap_content"
@@ -25,78 +25,38 @@
     </LinearLayout>
 
     <Button
-        android:text="获取数字"
-        android:onClick="getCount"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="selectSample"
+        android:text="随机查询" />
 
     <Button
-        android:text="复制数据库"
-        android:onClick="dataCopy"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="selectSample_1"
+        android:text="普通查询" />
 
     <Button
-        android:text="补充数据"
-        android:onClick="dataTemp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <com.yangyakun.androidtool.utils.MarqueeText
-        android:id="@+id/tv_device_name"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:focusableInTouchMode="true"
-        android:scrollHorizontally="true"
-        android:focusable="true"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:text="设备名称sdf设备" />
+        android:onClick="updateSample_1"
+        android:text="更新数据100000" />
 
-    <TextView
-        android:id="@+id/tv_device_name3"
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:focusableInTouchMode="true"
-        android:scrollHorizontally="true"
-        android:focusable="true"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:text="设备名称sdf设备" />
+        android:onClick="unionSelect"
+        android:text="简单联合查询" />
 
-    <com.yangyakun.androidtool.utils.MarqueeText
-        android:id="@+id/tv_device_name1"
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:focusableInTouchMode="true"
-        android:scrollHorizontally="true"
-        android:focusable="true"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:text="设备名称sdf设备设备名称sdf设备设备名称sdf设备设备名称sdf设备" />
+        android:onClick="attachSelect"
+        android:text="附加数据库联合查询" />
 
-    <TextView
-        android:id="@+id/tv_device_name4"
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:focusableInTouchMode="true"
-        android:scrollHorizontally="true"
-        android:focusable="true"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:text="设备名称sdf设备设备名称sdf设备设备名称sdf设备设备名称sdf设备" />
-
-
+        android:onClick="unionSelect_2"
+        android:text="附加数据库三层联合查询" />
 </LinearLayout>

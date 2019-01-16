@@ -10,17 +10,22 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.yangyakun.androidtool.db.dbmanage.DBManager;
+import com.yangyakun.androidtool.db.dbmanage.PbPrescriptionDBManager;
 import com.yangyakun.androidtool.db.domain.Commondity;
 import com.yangyakun.androidtool.db.domain.LableDetail;
 import com.yangyakun.androidtool.db.domain.LableMain;
 import com.yangyakun.androidtool.db.domain.Patient;
 import com.yangyakun.androidtool.db.domain.Prescription;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 public class CountService extends Service {
     /**
      * 创建参数
      */
-    boolean threadDisable =true;
+    boolean threadDisable = true;
     int count;
 
     @Override
@@ -28,8 +33,8 @@ public class CountService extends Service {
         // TODO Auto-generated method stub
         System.out.println("onBind.....");
         IBinder result = null;
-        if ( null == result ) result = new ServiceBinder() ;
-        Toast.makeText(this, "onBind",Toast.LENGTH_LONG);
+        if (null == result) result = new ServiceBinder();
+        Toast.makeText(this, "onBind", Toast.LENGTH_LONG);
         return result;
     }
 
@@ -38,7 +43,10 @@ public class CountService extends Service {
         // get the Rx variant of the note DAO
         super.onCreate();
     }
-    public void startInsertData(){
+
+    public void startInsertData() {
+
+        long startAll = System.currentTimeMillis();
 
         new Thread(new Runnable() {
             @Override
@@ -48,7 +56,8 @@ public class CountService extends Service {
                 patient.doMain(100000);
                 long end = System.currentTimeMillis();
 
-                System.out.println("患者耗时："+(end-start));
+                System.out.println("患者耗时：" + (end - start));
+                System.out.println("患者耗时总耗时：" + (end - startAll));
             }
         }).start();
 
@@ -63,6 +72,7 @@ public class CountService extends Service {
                 long end = System.currentTimeMillis();
 
                 System.out.println("标签耗时："+(end-start));
+                System.out.println("标签耗时总耗时：" + (end - startAll));
             }
         }).start();
         new Thread(new Runnable() {
@@ -74,6 +84,7 @@ public class CountService extends Service {
                 long end = System.currentTimeMillis();
 
                 System.out.println("处方耗时："+(end-start));
+                System.out.println("处方耗时总耗时：" + (end - startAll));
             }
         }).start();
 
@@ -85,39 +96,180 @@ public class CountService extends Service {
                 commondity.doMain(100000);
                 long end = System.currentTimeMillis();
                 System.out.println("药品耗时："+(end-start));
+                System.out.println("药品耗时总耗时：" + (end - startAll));
             }
         }).start();
-
+//
 
     }
 
-    public void startInsertDataTemp(){
+    /**
+     * 随机查询
+     */
+    public void selectSample() {
+        new Thread(() -> {
+            long start = System.currentTimeMillis();
+            String sql01 = "SELECT id FROM pb_prescription_main ORDER BY random() LIMIT 1;";
+            SQLiteDatabase sqLiteDatabase = PbPrescriptionDBManager.getInstance().openDatabase();
+            for (int i = 0; i < 10000; i++) {
+                Cursor cursor = sqLiteDatabase.rawQuery(sql01, null);
+                if (cursor.moveToNext()) {
+                    String anInt = cursor.getString(0);
+                    Log.e(i + "随机id", anInt);
+                }
+                cursor.close();
+            }
+            DBManager.getInstance().closeDatabase();
+            long end = System.currentTimeMillis();
 
+            System.out.println("10000查询耗时：" + (end - start));
+        }).start();
+    }
+
+    /**
+     * 查询
+     */
+    public void selectSample_1() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 long start = System.currentTimeMillis();
-                LableDetail lableDetail = new LableDetail();
-                lableDetail.doMain(100000);
+                String sql01 = "SELECT id FROM pb_prescription_main where id = ?";
+                SQLiteDatabase sqLiteDatabase = PbPrescriptionDBManager.getInstance().openDatabase();
+                for (int i = 0; i < 10000; i++) {
+                    Cursor cursor = sqLiteDatabase.rawQuery(sql01, new String[]{"5c1cd64a-4236-445e-b646-61bdbcf2eeed"});
+                    if (cursor.moveToNext()) {
+                        String anInt = cursor.getString(0);
+                        Log.e(i + "查询id", anInt);
+                    }
+                    cursor.close();
+                }
+                DBManager.getInstance().closeDatabase();
                 long end = System.currentTimeMillis();
 
-                System.out.println("耗时："+(end-start));
+                System.out.println("10000查询耗时：" + (end - start));
             }
         }).start();
-
     }
 
-    public void testSql(){
-        String sql01 = "select count(1)as count from pb_prescription_details";
+    /**
+     * 更新
+     */
+    public void updateSample_1() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                long start = System.currentTimeMillis();
+                String sql01 = "UPDATE pb_prescription_main set weight = '110' where id = ?";
+                SQLiteDatabase sqLiteDatabase = PbPrescriptionDBManager.getInstance().openDatabase();
+                for (int i = 0; i < 100000; i++) {
+                    sqLiteDatabase.execSQL(sql01, new String[]{"5c1cd64a-4236-445e-b646-61bdbcf2eeed"});
+                    System.out.println("更新耗时" + i);
+                }
+                DBManager.getInstance().closeDatabase();
+                long end = System.currentTimeMillis();
 
-        SQLiteDatabase sqLiteDatabase = DBManager.getInstance().openDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(sql01, null);
-        if(cursor.moveToNext()){
-            int anInt = cursor.getInt(0);
-            Log.e("test",anInt+"");
-        }
-        DBManager.getInstance().closeDatabase();
+                System.out.println("100000更新耗时：" + (end - start));
+            }
+        }).start();
     }
+
+    /**
+     * 简单联合查询
+     */
+    public void unionSelect() {
+        new Thread(() -> {
+            String sql01 = "SELECT id FROM pb_prescription_main ORDER BY random() LIMIT 1;";
+            SQLiteDatabase sqLiteDatabase = PbPrescriptionDBManager.getInstance().openDatabase();
+            List<String> list = new ArrayList<>();
+            Cursor cursor = sqLiteDatabase.rawQuery(sql01, null);
+            while (cursor.moveToNext()) {
+                String anInt = cursor.getString(0);
+                list.add(anInt);
+            }
+            cursor.close();
+            long start = System.currentTimeMillis();
+            String sqlunion = "select pb_prescription_main.id FROM pb_prescription_main " +
+                    " LEFT JOIN pb_prescription_details ON pb_prescription_main.id = pb_prescription_details.diagnosisId " +
+                    " WHERE pb_prescription_main.id = ?";
+            for (String id : list) {
+                Cursor cursorPrescription = sqLiteDatabase.rawQuery(sqlunion, new String[]{id});
+                if (cursorPrescription.moveToNext()) {
+                    String anInt = cursorPrescription.getString(0);
+                    System.out.println("处方id" + anInt);
+                }
+                cursorPrescription.close();
+            }
+            long end = System.currentTimeMillis();
+            System.out.println("简单联合查询：" + (end - start));
+            DBManager.getInstance().closeDatabase();
+
+        }).start();
+    }
+
+    /**
+     * 附加数据库
+     */
+    public void attachSelect() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    long start = System.currentTimeMillis();
+                    SQLiteDatabase sqLiteDatabase = PbPrescriptionDBManager.getInstance().openDatabase();
+                    File externalFilesDir = getExternalFilesDir("patient.db");
+                    sqLiteDatabase.execSQL(String.format("ATTACH DATABASE \'%s\' AS \'%s\'", externalFilesDir.getAbsolutePath(), "patient"));
+
+                    String sql = "SELECT patient.pb_patient.id from patient.pb_patient " +
+                            " LEFT JOIN pb_prescription_main on pb_prescription_main.patientId = patient.pb_patient.id " +
+                            " where patient.pb_patient.id = ? ";
+                    Cursor cursorPrescription = sqLiteDatabase.rawQuery(sql, new String[]{"00030aa6-78ed-477b-9c0a-ef34d4c78158"});
+                    if (cursorPrescription.moveToNext()) {
+                        String anInt = cursorPrescription.getString(0);
+                        System.out.println("复杂联合查询" + anInt);
+                    }
+                    cursorPrescription.close();
+
+                    sqLiteDatabase.execSQL(String.format("DETACH DATABASE %s", "patient"));
+                    DBManager.getInstance().closeDatabase();
+                    long end = System.currentTimeMillis();
+
+                    System.out.println("附加数据库耗时：" + (end - start));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    public void unionSelect_2() {
+        new Thread(() -> {
+            try {
+                SQLiteDatabase sqLiteDatabase = PbPrescriptionDBManager.getInstance().openDatabase();
+                File externalFilesDir = getExternalFilesDir("patient.db");
+                sqLiteDatabase.execSQL(String.format("ATTACH DATABASE \'%s\' AS \'%s\'", externalFilesDir.getAbsolutePath(), "patient"));
+                long start = System.currentTimeMillis();
+                String sqlunion = "SELECT pb_prescription_details.* from patient.pb_patient \n" +
+                        " LEFT JOIN pb_prescription_main on pb_prescription_main.patientId = patient.pb_patient.id \n" +
+                        " LEFT JOIN pb_prescription_details on pb_prescription_main.id = pb_prescription_details.diagnosisId \n" +
+                        " where patient.pb_patient.id = ?";
+                Cursor cursorPrescription = sqLiteDatabase.rawQuery(sqlunion, new String[]{"97e8be1b-c432-4547-8672-ed8ab9c3374e"});
+                if (cursorPrescription.moveToNext()) {
+                    String anInt = cursorPrescription.getString(0);
+                    System.out.println("复杂联合查询" + anInt);
+                }
+                cursorPrescription.close();
+                sqLiteDatabase.execSQL(String.format("DETACH DATABASE %s", "patient"));
+                DBManager.getInstance().closeDatabase();
+                long end = System.currentTimeMillis();
+
+                System.out.println("附加数据库三层联合查询：" + (end - start));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
 
     @Override
     public void onDestroy() {
