@@ -76,5 +76,10 @@
         android:layout_height="wrap_content"
         android:onClick="makeFileSetting"
         android:text="设置文件" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="testRealm"
+        android:text="realm" />
 
 </LinearLayout>

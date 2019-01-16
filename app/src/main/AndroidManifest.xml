@@ -39,8 +39,10 @@
         <activity android:name=".activity.NEtTestActivity" />
         <activity android:name=".activity.MdnsActivity" />
         <activity android:name=".activity.AudioManagerActivity" />
+        <activity android:name=".activity.DbRealmActivity"/>
 
         <service android:name=".service.CountService" />
+        <service android:name=".service.RealmCountService" />
 
         <activity android:name=".activity.DBActivity" />
 

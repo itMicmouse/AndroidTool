@@ -14,7 +14,7 @@ public class Patient {
         try {
             db = PbPatientDBManager.getInstance().openDatabase();
 //            db.beginTransaction();
-            String sql_insert = " replace into pb_patient (id, userName, userShortName, birthday, sex, phone, isDelete, illHistory, "
+            String sql_insert = " insert into pb_patient (id, userName, userShortName, birthday, sex, phone, isDelete, illHistory, "
                     + " allergicHistory, address, totalArrears, flag, base_version, status, clinicId ,idCardNo ,agency ,folk,validitytime ,fingerPrint,deviceType,diagnose,patientSource) values " + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
             SQLiteStatement stat_insert = db.compileStatement(sql_insert);
             for (int i = 0; i < magnitude; i++) {

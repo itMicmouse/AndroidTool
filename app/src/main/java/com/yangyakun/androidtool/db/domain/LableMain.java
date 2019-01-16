@@ -17,7 +17,7 @@ public class LableMain {
 //            db.beginTransaction();
 
             ArrayList<String> needdelete = new ArrayList<>();
-            String sql_insert = " replace into sys_label_main (id, clinicId, name, code, parentId, sort, base_version, status ) "
+            String sql_insert = " insert into sys_label_main (id, clinicId, name, code, parentId, sort, base_version, status ) "
                     + "values (?,?,?,?,?,?,?,?) ";
             SQLiteStatement stat_insert = db.compileStatement(sql_insert);
 

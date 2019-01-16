@@ -15,7 +15,7 @@ public class LableDetail {
             db = SysLabelDBManager.getInstance().openDatabase();
 //            db.beginTransaction();
             // 标签附表
-            String sql_insert1 = " replace into sys_label_details (id, clinicId, labelId, groupObjId, sort , base_version, status ) "
+            String sql_insert1 = " insert into sys_label_details (id, clinicId, labelId, groupObjId, sort , base_version, status ) "
                     + "values (?,?,?,?,?,?,?) ";
             SQLiteStatement stat_insert1 = db.compileStatement(sql_insert1);
             for (int i = 0; i < magnitude; i++) {

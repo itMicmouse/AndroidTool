@@ -15,7 +15,7 @@ public class Commondity {
             db = PbCommodityMainDBManager.getInstance().openDatabase();
 //            db.beginTransaction();
             // 主表
-            String sql_insert = " replace into pb_commodity_main (id, commodityCategory, commodityCode, commodityName, commodityShortName, commonNum, simpleName, simpleShortName, " +
+            String sql_insert = " insert into pb_commodity_main (id, commodityCategory, commodityCode, commodityName, commodityShortName, commonNum, simpleName, simpleShortName, " +
                     "typeId, categoryId, dosageFormId, dosageUnitId, dosage, commonUnit, minimumUnit, taboo, direction, rate, quantum, quantum_unit, specs, " +
                     "enterpriseName, conversionValue, activeTime, prescriptionPrice1, prescriptionPrice2, prescriptionNum1, prescriptionNum2, showedRedPoint, overedThreshold, remark, " +
                     "base_version, status,clinicId,approvalNumber,priceLastUpdated,commoditySource,threshold,thresholdUnit) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

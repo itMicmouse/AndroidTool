@@ -16,7 +16,7 @@ public class Prescription {
             db = PbPrescriptionDBManager.getInstance().openDatabase();
 //            db.beginTransaction();
             // 主表
-            String sql_insert = " replace into pb_prescription_main (id ,patientId, diagnoseDate, height, temperature, weight, systolicPressure, diastolicPressure, complaint, illHistory, diagnose, " +
+            String sql_insert = " insert into pb_prescription_main (id ,patientId, diagnoseDate, height, temperature, weight, systolicPressure, diastolicPressure, complaint, illHistory, diagnose, " +
                     "taboo, allergicHistory, diagnosisStatus, medDisCost, otherCost, flag, isPrint, base_version, is_delete, clinicId ,regiFlag, outpatient_no, pay_time, prescriptionFlag, debtCost, " +
                     "paidCost, pulse, examOther, bloodGlucose, payType, age, patientName, sex, lastUpdated, busiOrderNo, onlinePayStatus, realName, homeAddress, phone,doctorMainId,invalidTime,invalidSysUser,invalidReason,is_delete) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
             SQLiteStatement stat_insert = db.compileStatement(sql_insert);
@@ -75,7 +75,7 @@ public class Prescription {
                 PrescriptionDetailsDTO2 prescriptionDetailsDTO2;
                 for (int j = 0; j < number; j++) {
                     // 从表
-                    String sql_insert2 = " replace into pb_prescription_details (id, commodityCategory, diagnosisId, commodityId, showCommodityName, groupId, useLevel, useLevelUnit, frequency, usage, "
+                    String sql_insert2 = " insert into pb_prescription_details (id, commodityCategory, diagnosisId, commodityId, showCommodityName, groupId, useLevel, useLevelUnit, frequency, usage, "
                             + "batchId, priceUnit, totalNumber, receivablePrice, isBlank, orderNum, clinicId, specifcations, docterOrder, dosageFormId,dosage,dosageUnit,unitType) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
                     SQLiteStatement stat_insert2 = db.compileStatement(sql_insert2);
 

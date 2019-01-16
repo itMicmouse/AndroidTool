@@ -34,6 +34,8 @@ import cn.hikyson.godeye.core.installconfig.SmConfig;
 import cn.hikyson.godeye.core.installconfig.ThreadConfig;
 import cn.hikyson.godeye.core.installconfig.TrafficConfig;
 import io.github.skyhacker2.sqliteonweb.SQLiteOnWeb;
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 public class BaseApplication extends Application {
 
@@ -81,6 +83,10 @@ public class BaseApplication extends Application {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
         }
+
+        Realm.init(this);
+        RealmConfiguration config = new RealmConfiguration.Builder().name("yyk.realm").build();
+        Realm.setDefaultConfiguration(config);
     }
 
     /**
