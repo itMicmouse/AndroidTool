@@ -127,6 +127,6 @@ public class DBActivity extends Activity {
     }
 
     public void cleanLog(View view) {
-        tv_result.append("");
+        tv_result.setText("");
     }
 }

@@ -77,6 +77,19 @@ public class BaseApplication extends Application {
         PbPrescriptionDBManager.initializeInstance(new PbPrescription(mApplication));
         SysLabelDBManager.initializeInstance(new SysLabel(mApplication));
 
+
+
+       com.yangyakun.androidtool.db.wcdb.dbmanage.DBManager.initializeInstance
+               (new com.yangyakun.androidtool.db.wcdb.muldb.DBHelper(mApplication));
+       com.yangyakun.androidtool.db.wcdb.dbmanage.PbCommodityMainDBManager.initializeInstance
+               (new com.yangyakun.androidtool.db.wcdb.muldb.PbCommodityMain(mApplication));
+       com.yangyakun.androidtool.db.wcdb.dbmanage.PbPatientDBManager.initializeInstance
+               (new com.yangyakun.androidtool.db.wcdb.muldb.PbPatient(mApplication));
+       com.yangyakun.androidtool.db.wcdb.dbmanage.PbPrescriptionDBManager.initializeInstance
+               (new com.yangyakun.androidtool.db.wcdb.muldb.PbPrescription(mApplication));
+       com.yangyakun.androidtool.db.wcdb.dbmanage.SysLabelDBManager.initializeInstance
+               (new com.yangyakun.androidtool.db.wcdb.muldb.SysLabel(mApplication));
+
         SQLiteOnWeb.init(this).start();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

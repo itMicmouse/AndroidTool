@@ -43,8 +43,11 @@
 
         <service android:name=".service.CountService" />
         <service android:name=".service.RealmCountService" />
+        <service android:name=".service.WCDBService" />
 
         <activity android:name=".activity.DBActivity" />
+
+        <activity android:name=".activity.WCDBActivity"/>
 
         <receiver android:name=".recycleview.UsbBroadcastReceiver">
             <intent-filter>

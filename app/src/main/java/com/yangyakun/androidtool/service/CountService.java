@@ -222,6 +222,9 @@ public class CountService extends Service {
             }
             long end = System.currentTimeMillis();
             System.out.println("简单联合查询：" + (end - start));
+            SqlData sqlData = new SqlData();
+            sqlData.Message = "简单联合查询：" + (end - start);
+            EventBus.getDefault().post(sqlData);
             DBManager.getInstance().closeDatabase();
         });
     }
@@ -252,6 +255,9 @@ public class CountService extends Service {
                 long end = System.currentTimeMillis();
 
                 System.out.println("附加数据库耗时：" + (end - start));
+                SqlData sqlData = new SqlData();
+                sqlData.Message = "附加数据库耗时：" + (end - start);
+                EventBus.getDefault().post(sqlData);
             } catch (Exception e) {
                 e.printStackTrace();
             }

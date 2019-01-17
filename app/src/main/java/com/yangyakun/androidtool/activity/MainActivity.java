@@ -74,6 +74,11 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, FileActivity.class);
         startActivity(intent);
     }
+
+    public void wcdbDemo(View view) {
+        Intent intent = new Intent(MainActivity.this, WCDBActivity.class);
+        startActivity(intent);
+    }
     public void testRealm(View view) {
         Intent intent = new Intent(MainActivity.this, DbRealmActivity.class);
         startActivity(intent);

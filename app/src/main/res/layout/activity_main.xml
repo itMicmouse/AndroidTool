@@ -71,7 +71,8 @@
         android:layout_height="wrap_content"
         android:onClick="makeWifiSetting"
         android:text="设置wifi" />
- <Button
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="makeFileSetting"
@@ -81,5 +82,11 @@
         android:layout_height="wrap_content"
         android:onClick="testRealm"
         android:text="realm" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="wcdbDemo"
+        android:text="wcDb测试" />
 
 </LinearLayout>
