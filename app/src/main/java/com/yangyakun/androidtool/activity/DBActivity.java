@@ -6,31 +6,40 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.Debug;
-import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v4.content.FileProvider;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yangyakun.androidtool.R;
 import com.yangyakun.androidtool.eventbus.SqlData;
 import com.yangyakun.androidtool.service.CountService;
-import com.yangyakun.androidtool.utils.FileUtils;
-import com.yangyakun.androidtool.utils.MarqueeText;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.io.File;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DBActivity extends Activity {
 
     private TextView tv_result;
+
+    private CheckBox cb_patient;
+    private CheckBox cb_commondity;
+    private CheckBox cb_prescription;
+    private CheckBox cb_lable;
+
+    private EditText et_sql;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,12 +51,38 @@ public class DBActivity extends Activity {
         /** 进入Activity开始服务 */
         bindService(intent, conn, Context.BIND_AUTO_CREATE);
         tv_result = findViewById(R.id.tv_result);
+        cb_patient = findViewById(R.id.cb_patient);
+        cb_commondity = findViewById(R.id.cb_commondity);
+        cb_prescription = findViewById(R.id.cb_prescription);
+        cb_lable = findViewById(R.id.cb_lable);
+        et_sql = findViewById(R.id.et_sql);
         tv_result.setMovementMethod(ScrollingMovementMethod.getInstance());
+
     }
 
     public void opensettting(View view) {
         if (countService != null) {
-            countService.startInsertData();
+//            countService.startInsertData();
+            List<String> dataList = new ArrayList<>();
+            List<String> dataListName = new ArrayList<>();
+            if(cb_patient.isChecked()){
+                dataList.add("patient.db");
+                dataListName.add("patient");
+            }
+            if(cb_commondity.isChecked()){
+                dataList.add("commoditymain.db");
+                dataListName.add("commoditymain");
+
+            }
+            if(cb_lable.isChecked()){
+                dataList.add("label.db");
+                dataListName.add("label");
+            }
+            if(TextUtils.isEmpty(et_sql.getText())){
+                Toast.makeText(countService, "请写sql", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            countService.execSql(dataList,dataListName,et_sql.getText().toString());
         }
     }
 
@@ -81,6 +116,8 @@ public class DBActivity extends Activity {
         EventBus.getDefault().unregister(this);
         Log.v("MainStadyServics", "out");
     }
+
+
 
     public void selectSample(View view) {
         if (countService != null) {

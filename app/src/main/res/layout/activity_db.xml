@@ -11,6 +11,7 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/et_sql"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -20,7 +21,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="opensettting"
-            android:text="初始化数据" />
+            android:text="执行" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cb_patient"
+            android:text="患者" />
+        <CheckBox
+            android:text="药品"
+            android:id="@+id/cb_commondity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:text="处方"
+            android:checked="true"
+            android:enabled="false"
+            android:id="@+id/cb_prescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:text="标签"
+            android:id="@+id/cb_lable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -38,6 +67,7 @@
             android:layout_height="wrap_content"
             android:onClick="selectSample_1"
             android:text="普通查询" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

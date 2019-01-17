@@ -23,6 +23,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -301,6 +302,55 @@ public class CountService extends Service {
         super.onDestroy();
         /** 服务停止时，终止计数进程 */
         this.threadDisable = true;
+    }
+
+    public void execSql(List<String> dataList, List<String> dataListName,String sql) {
+        scheduledExecutorService.execute(() -> {
+            try {
+                SQLiteDatabase sqLiteDatabase = PbPrescriptionDBManager.getInstance().openDatabase();
+                for (int i = 0; i < dataList.size(); i++) {
+                    String path = dataList.get(i);
+                    String name = dataListName.get(i);
+                    File externalFilesDir = getExternalFilesDir(path);
+                    sqLiteDatabase.execSQL(String.format("ATTACH DATABASE \'%s\' AS \'%s\'", externalFilesDir.getAbsolutePath(), name));
+                }
+
+                long start = System.currentTimeMillis();
+                Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
+                ArrayList<HashMap> list = new ArrayList<>();
+                HashMap hashMap;
+                while (cursor.moveToNext()) {
+                    hashMap = new HashMap();
+                    for (int i = 0; i < cursor.getColumnCount(); i++) {
+                        String string = cursor.getString(i);
+                        String columnName = cursor.getColumnName(i);
+                        hashMap.put(columnName,string);
+                    }
+                    list.add(hashMap);
+                }
+                cursor.close();
+                for (int i = 0; i < dataList.size(); i++) {
+                    String name = dataListName.get(i);
+                    sqLiteDatabase.execSQL(String.format("DETACH DATABASE %s", name));
+                }
+                DBManager.getInstance().closeDatabase();
+                long end = System.currentTimeMillis();
+
+                System.out.println("附加数据库三层联合查询：" + (end - start));
+                SqlData sqlData = new SqlData();
+                if(list.size()>100) {
+                    sqlData.Message = "耗时" + (end - start) + "内容" + list.subList(0, 100).toString();
+                }else {
+                    sqlData.Message = "耗时" + (end - start) + "内容" + list.toString();
+                }
+                EventBus.getDefault().post(sqlData);
+            } catch (Exception e) {
+                SqlData sqlData = new SqlData();
+                sqlData.Message = e.getMessage();
+                EventBus.getDefault().post(sqlData);
+                e.printStackTrace();
+            }
+        });
     }
 
 //此方法是为了可以在Acitity中获得服务的实例
