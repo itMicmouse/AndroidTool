@@ -21,42 +21,73 @@
             android:layout_height="wrap_content"
             android:onClick="opensettting"
             android:text="初始化数据" />
-
     </LinearLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="selectSample"
-        android:text="随机查询" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="selectSample_1"
-        android:text="普通查询" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="selectSample"
+            android:text="随机查询" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="updateSample_1"
-        android:text="更新数据100000" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="selectSample_1"
+            android:text="普通查询" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="cleanLog"
+            android:text="删除日志" />
+    </LinearLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="unionSelect"
-        android:text="简单联合查询" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="attachSelect"
-        android:text="附加数据库联合查询" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="updateSample_1"
+            android:text="更新数据100000" />
 
-    <Button
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="unionSelect"
+            android:text="简单联合查询" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="unionSelect_2"
-        android:text="附加数据库三层联合查询" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="attachSelect"
+            android:text="附加数据库联合查询" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="unionSelect_2"
+            android:text="附加数据库三层联合查询" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="5dp"
+        android:background="#000000"
+        android:textColor="#FFF"
+        android:textSize="10dp"
+        android:textStyle="bold" />
+
+
 </LinearLayout>

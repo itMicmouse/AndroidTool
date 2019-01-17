@@ -13,7 +13,6 @@ public class Commondity {
         SQLiteDatabase db = null;
         try {
             db = PbCommodityMainDBManager.getInstance().openDatabase();
-//            db.beginTransaction();
             // 主表
             String sql_insert = " insert into pb_commodity_main (id, commodityCategory, commodityCode, commodityName, commodityShortName, commonNum, simpleName, simpleShortName, " +
                     "typeId, categoryId, dosageFormId, dosageUnitId, dosage, commonUnit, minimumUnit, taboo, direction, rate, quantum, quantum_unit, specs, " +
@@ -21,6 +20,9 @@ public class Commondity {
                     "base_version, status,clinicId,approvalNumber,priceLastUpdated,commoditySource,threshold,thresholdUnit) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             SQLiteStatement stat_insert = db.compileStatement(sql_insert);
             for (int j = 0; j < magnitude; j++) {
+                if (j % 10000 == 0) {
+                    db.beginTransaction();
+                }
                 stat_insert.bindString(1, UUID.randomUUID().toString());
                 stat_insert.bindString(2, "commodityCategory");
                 stat_insert.bindString(3, "commodityCode");
@@ -61,15 +63,21 @@ public class Commondity {
                 stat_insert.bindString(38, "threshold");
                 stat_insert.bindString(39, "thresholdUnit");
                 stat_insert.executeInsert();
-                System.out.println("添加药品:"+j);
+                System.out.println("添加药品:" + j);
+                if (j % 10000 == (10000 - 1)) {
+                    db.setTransactionSuccessful();
+                    db.endTransaction();
+                }
             }
-//            db.setTransactionSuccessful();
+            if(db.inTransaction()){
+                db.setTransactionSuccessful();
+                db.endTransaction();
+            }
 
         } catch (Exception e) {
             // 异常处理
         } finally {
             if (null != db) {
-//                db.endTransaction();
                 PbCommodityMainDBManager.getInstance().closeDatabase();
             }
         }

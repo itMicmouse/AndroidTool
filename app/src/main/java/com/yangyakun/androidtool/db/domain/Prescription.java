@@ -22,6 +22,9 @@ public class Prescription {
             SQLiteStatement stat_insert = db.compileStatement(sql_insert);
             PrescriptionMainDTO prescriptionMainDTO;
             for (int i = 0; i < magnitude; i++) {
+                if (i % 1000 == 0) {
+                    db.beginTransaction();
+                }
                 prescriptionMainDTO = new PrescriptionMainDTO();
                 stat_insert.bindString(1, prescriptionMainDTO.getId());
                 stat_insert.bindString(2, prescriptionMainDTO.getPatientId() != null ? prescriptionMainDTO.getPatientId() : "");
@@ -112,6 +115,14 @@ public class Prescription {
                     System.out.println("添加处方附表:"+j);
                     stat_insert2.executeInsert();
                 }
+                if (i % 1000 == (1000 - 1)) {
+                    db.setTransactionSuccessful();
+                    db.endTransaction();
+                }
+            }
+            if (db.inTransaction()) {
+                db.setTransactionSuccessful();
+                db.endTransaction();
             }
 //            db.setTransactionSuccessful();
         } catch (Exception e) {

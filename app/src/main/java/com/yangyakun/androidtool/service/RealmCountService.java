@@ -4,10 +4,14 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.yangyakun.androidtool.db.realmdomain.*;
+import com.yangyakun.androidtool.db.realmdomain.Commondity;
+import com.yangyakun.androidtool.db.realmdomain.Patitent;
+import com.yangyakun.androidtool.db.realmdomain.PrescriptionDetails;
+import com.yangyakun.androidtool.db.realmdomain.PrescriptionMain;
+import com.yangyakun.androidtool.db.realmdomain.SysLabelDetails;
+import com.yangyakun.androidtool.db.realmdomain.SysLabelMain;
 
 import java.util.UUID;
 

@@ -22,6 +22,9 @@ public class LableMain {
             SQLiteStatement stat_insert = db.compileStatement(sql_insert);
 
             for (int i = 0; i < magnitude; i++) {
+                if (i % 10000 == 0) {
+                    db.beginTransaction();
+                }
                 stat_insert.bindString(1, UUID.randomUUID().toString());
                 stat_insert.bindString(2, "clinicId");
                 stat_insert.bindString(3, "name");
@@ -31,7 +34,15 @@ public class LableMain {
                 stat_insert.bindString(7, "base_version");
                 stat_insert.bindString(8, "status");
                 stat_insert.executeInsert();
-                System.out.println("添加标签主表:"+i);
+                System.out.println("添加标签主表:" + i);
+                if (i % 10000 == (10000 - 1)) {
+                    db.setTransactionSuccessful();
+                    db.endTransaction();
+                }
+            }
+            if (db.inTransaction()) {
+                db.setTransactionSuccessful();
+                db.endTransaction();
             }
 //            db.setTransactionSuccessful();
         } catch (Exception e) {

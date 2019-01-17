@@ -18,6 +18,9 @@ public class Patient {
                     + " allergicHistory, address, totalArrears, flag, base_version, status, clinicId ,idCardNo ,agency ,folk,validitytime ,fingerPrint,deviceType,diagnose,patientSource) values " + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
             SQLiteStatement stat_insert = db.compileStatement(sql_insert);
             for (int i = 0; i < magnitude; i++) {
+                if (i % 10000 == 0) {
+                    db.beginTransaction();
+                }
                 stat_insert.bindString(1, UUID.randomUUID().toString());
                 stat_insert.bindString(2, getName());
                 stat_insert.bindString(3, "userShortName");
@@ -43,6 +46,14 @@ public class Patient {
                 stat_insert.bindString(23, "patientSource");
                 stat_insert.executeInsert();
                 System.out.println("添加患者:"+i);
+                if (i % 10000 == (10000 - 1)) {
+                    db.setTransactionSuccessful();
+                    db.endTransaction();
+                }
+            }
+            if(db.inTransaction()){
+                db.setTransactionSuccessful();
+                db.endTransaction();
             }
 //            db.setTransactionSuccessful();
         } catch (Exception e) {

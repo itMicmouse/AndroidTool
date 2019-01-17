@@ -11,26 +11,38 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.yangyakun.androidtool.R;
+import com.yangyakun.androidtool.eventbus.SqlData;
 import com.yangyakun.androidtool.service.CountService;
 import com.yangyakun.androidtool.utils.FileUtils;
 import com.yangyakun.androidtool.utils.MarqueeText;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.io.File;
 
 public class DBActivity extends Activity {
+
+    private TextView tv_result;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db);
 
+        EventBus.getDefault().register(this);
         Intent intent = new Intent(DBActivity.this, CountService.class);
         /** 进入Activity开始服务 */
         bindService(intent, conn, Context.BIND_AUTO_CREATE);
+        tv_result = findViewById(R.id.tv_result);
+        tv_result.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
 
     public void opensettting(View view) {
@@ -66,6 +78,7 @@ public class DBActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         this.unbindService(conn);
+        EventBus.getDefault().unregister(this);
         Log.v("MainStadyServics", "out");
     }
 
@@ -103,5 +116,17 @@ public class DBActivity extends Activity {
         if (countService != null) {
             countService.unionSelect_2();
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(SqlData event) {
+        if(event.clean) {
+            tv_result.setText("");
+        }
+        tv_result.append(event.Message);
+    }
+
+    public void cleanLog(View view) {
+        tv_result.append("");
     }
 }
