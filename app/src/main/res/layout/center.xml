@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_prescription_item"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_current_earn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="33dp"
+        android:text="当前就诊"
+        android:textColor="#264f97"
+        android:textSize="60dp" />
+
+    <RelativeLayout
+        android:id="@+id/relv_reporttime1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_current_earn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_patient_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_toEndOf="@+id/tv_doctorNumber"
+            android:text="患者"
+            android:textColor="#ff8b00"
+            android:textSize="80dp" />
+
+        <TextView
+            android:id="@+id/tv_doctorNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:text="25号"
+            android:textColor="#ff8b00"
+            android:textSize="80dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_current_wait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relv_reporttime1"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="10dp"
+        android:text="待就诊"
+        android:textColor="#264f97"
+        android:textSize="60dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#f6f9ff"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_patient_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_doctor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:text="张建国医生"
+            android:textColor="#1A1A1A"
+            android:textSize="60dp" />
+
+        <RelativeLayout
+            android:id="@+id/relv_ercode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_doctor_name"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="45dp">
+
+            <TextView
+                android:id="@+id/tv_sao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/img_ercode"
+                android:layout_alignEnd="@+id/img_ercode"
+                android:gravity="center"
+                android:text="请用微信扫码挂号"
+                android:textColor="#666666"
+                android:textSize="30dp" />
+
+            <ImageView
+                android:id="@+id/img_ercode"
+                android:layout_width="240dp"
+                android:layout_height="230dp"
+                android:layout_below="@+id/tv_sao"
+                android:layout_marginTop="7dp"
+                android:contentDescription="TODO"
+                android:scaleType="centerCrop" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_doctor_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_doctor_name"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="40dp"
+            android:layout_toStartOf="@+id/relv_ercode"
+            android:ellipsize="end"
+            android:lineSpacingExtra="2dp"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="4"
+            android:textColor="#363636"
+            android:textSize="30dp"
+            tools:text="张建国医生医学博士生产绝望绝望情境全家福积分请问能否尽快去封口费全额付款去王府井武器防具发放金额父亲开发区开发区疯狂潜伏期" />
+
+    </RelativeLayout>
+
+</LinearLayout>
+

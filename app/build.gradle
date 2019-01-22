@@ -53,4 +53,7 @@ dependencies {
 
     implementation 'org.greenrobot:eventbus:3.1.1'
 
+    //二维码集成
+    compile 'cn.yipianfengye.android:zxing-library:2.2'
+
 }

@@ -82,6 +82,11 @@
         android:layout_height="wrap_content"
         android:onClick="testRealm"
         android:text="realm" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="testViewPager"
+        android:text="VIewPager" />
 
     <Button
         android:layout_width="wrap_content"

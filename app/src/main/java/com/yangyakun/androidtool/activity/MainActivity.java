@@ -83,4 +83,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, DbRealmActivity.class);
         startActivity(intent);
     }
+
+    public void testViewPager(View view) {
+        Intent intent = new Intent(MainActivity.this, ViewPagerActivity.class);
+        startActivity(intent);
+    }
 }
