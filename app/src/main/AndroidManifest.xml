@@ -12,6 +12,7 @@
 
     <uses-feature android:name="android.hardware.usb.host" />
 
+
     <application
         android:name=".app.BaseApplication"
         android:allowBackup="true"
@@ -39,15 +40,14 @@
         <activity android:name=".activity.NEtTestActivity" />
         <activity android:name=".activity.MdnsActivity" />
         <activity android:name=".activity.AudioManagerActivity" />
-        <activity android:name=".activity.DbRealmActivity"/>
+        <activity android:name=".activity.DbRealmActivity" />
 
         <service android:name=".service.CountService" />
         <service android:name=".service.RealmCountService" />
         <service android:name=".service.WCDBService" />
 
         <activity android:name=".activity.DBActivity" />
-
-        <activity android:name=".activity.WCDBActivity"/>
+        <activity android:name=".activity.WCDBActivity" />
 
         <receiver android:name=".recycleview.UsbBroadcastReceiver">
             <intent-filter>
@@ -70,10 +70,11 @@
 
         <activity android:name=".activity.TracerouteActivity" />
         <activity android:name=".activity.TracerouteLinuxActivity" />
-        <activity android:name=".activity.EmailActivity"></activity>
-        <activity android:name=".activity.WifiSetting"/>
-        <activity android:name=".file.FileActivity"/>
-        <activity android:name=".activity.ViewPagerActivity"/>
+        <activity android:name=".activity.EmailActivity" />
+        <activity android:name=".activity.WifiSetting" />
+        <activity android:name=".file.FileActivity" />
+        <activity android:name=".activity.ViewPagerActivity" />
+        <activity android:name=".activity.RetrofitActivity"></activity>
     </application>
 
 </manifest>

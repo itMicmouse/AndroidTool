@@ -88,8 +88,7 @@ public class WCDBService extends Service {
         super.onDestroy();
     }
 
-//此方法是为了可以在Acitity中获得服务的实例
-
+    //此方法是为了可以在Acitity中获得服务的实例
     public class ServiceBinder extends Binder {
         public WCDBService getService() {
             return WCDBService.this;

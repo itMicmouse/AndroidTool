@@ -43,10 +43,10 @@ dependencies {
     releaseImplementation 'io.github.skyhacker2:sqliteonweb-no-op:1.0.2'
     implementation 'com.blankj:utilcode:1.22.9'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
 
     implementation 'com.tencent.wcdb:wcdb-android:1.0.0'
-
 
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
@@ -54,6 +54,6 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.1.1'
 
     //二维码集成
-    compile 'cn.yipianfengye.android:zxing-library:2.2'
+    implementation 'cn.yipianfengye.android:zxing-library:2.2'
 
 }

@@ -88,4 +88,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, ViewPagerActivity.class);
         startActivity(intent);
     }
+
+    public void testRetrofit(View view) {
+        Intent intent = new Intent(MainActivity.this, RetrofitActivity.class);
+        startActivity(intent);
+    }
 }
