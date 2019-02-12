@@ -106,6 +106,8 @@ public class BaseApplication extends Application {
      * 是否主进程
      */
     private static boolean isMainProcess(Application application) {
+
+
         int pid = android.os.Process.myPid();
         String processName = "";
         ActivityManager manager = (ActivityManager) application.getSystemService

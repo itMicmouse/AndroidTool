@@ -27,14 +27,10 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
-                <!-- <category android:name="android.intent.category.HOME"/> -->
-                <!-- <category android:name="android.intent.category.DEFAULT"/> -->
             </intent-filter>
         </activity>
         <activity android:name=".activity.RecycleViewActivity" />
         <activity android:name=".activity.MonitorActivity" />
-        <activity android:name=".activity.RecycleViewDoubleActivity" />
         <activity android:name=".activity.MdnsActivity" />
         <activity android:name=".activity.AudioManagerActivity" />
         <activity android:name=".activity.DbRealmActivity" />
@@ -65,11 +61,10 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.TracerouteActivity" />
         <activity android:name=".activity.TracerouteLinuxActivity" />
         <activity android:name=".activity.EmailActivity" />
         <activity android:name=".activity.RetrofitActivity" />
-        <activity android:name=".activity.ViewActivity"></activity>
+        <activity android:name=".activity.ViewActivity"/>
     </application>
 
 </manifest>

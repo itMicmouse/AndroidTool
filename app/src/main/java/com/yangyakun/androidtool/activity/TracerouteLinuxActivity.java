@@ -2,20 +2,15 @@ package com.yangyakun.androidtool.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yangyakun.androidtool.R;
-import com.yangyakun.androidtool.bean.TracerouteContainer;
 import com.yangyakun.androidtool.utils.DesityUtil;
 
 import java.io.BufferedReader;

@@ -51,7 +51,6 @@
         android:id="@+id/status"
         android:layout_width="fill_parent"
         android:layout_height="200dp"
-        android:text="、、、、"
         android:focusable="true" />
 
     <EditText
