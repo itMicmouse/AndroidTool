@@ -5,14 +5,14 @@ import io.realm.annotations.PrimaryKey;
 
 public class SysLabelDetails extends RealmObject {
     @PrimaryKey
-    private String id = "id ";
-    private String clinicId = "clinicId ";
-    private String labelId = "labelId ";
-    private String groupObjId = "groupObjId ";
-    private String sort = "sort ";
-    private String flag = "flag ";
-    private String status = "status ";
-    private String base_version = "base_version ";
+    private String id = "id";
+    private String clinicId = "clinicId";
+    private String labelId = "labelId";
+    private String groupObjId = "groupObjId";
+    private String sort = "sort";
+    private String flag = "flag";
+    private String status = "status";
+    private String base_version = "base_version";
 
     public String getId() {
         return id;

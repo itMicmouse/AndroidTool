@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidTool</string>
+    <string name="app_name">android工具</string>
 
     <string name="connect">Connect</string>
     <string name="discover">Discover</string>
