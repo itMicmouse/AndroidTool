@@ -45,15 +45,4 @@ public class DesityUtil {
             }
         });
     }
-
-    public static boolean isEmpty(String s) {
-        if (null == s) {
-            return true;
-        }
-        if (s.length() == 0) {
-            return true;
-        }
-        return s.trim().length() == 0;
-    }
-
 }

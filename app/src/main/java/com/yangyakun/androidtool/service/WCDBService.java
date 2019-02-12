@@ -16,20 +16,18 @@ public class WCDBService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO Auto-generated method stub
         System.out.println("onBind.....");
-        IBinder result = null;
-        if ( null == result ) result = new ServiceBinder() ;
-        Toast.makeText(this, "onBind",Toast.LENGTH_LONG);
+        IBinder result = new ServiceBinder();
+        Toast.makeText(this, "onBind", Toast.LENGTH_LONG).show();
         return result;
     }
 
     @Override
     public void onCreate() {
-        // get the Rx variant of the note DAO
         super.onCreate();
     }
-    public void startInsertData(){
+
+    public void startInsertData() {
 
         new Thread(new Runnable() {
             @Override
@@ -39,7 +37,7 @@ public class WCDBService extends Service {
                 patient.doMain(100000);
                 long end = System.currentTimeMillis();
 
-                System.out.println("患者耗时："+(end-start));
+                System.out.println("患者耗时：" + (end - start));
             }
         }).start();
 
@@ -53,7 +51,7 @@ public class WCDBService extends Service {
                 lableDetail.doMain(100000);
                 long end = System.currentTimeMillis();
 
-                System.out.println("标签耗时："+(end-start));
+                System.out.println("标签耗时：" + (end - start));
             }
         }).start();
         new Thread(new Runnable() {
@@ -61,10 +59,10 @@ public class WCDBService extends Service {
             public void run() {
                 long start = System.currentTimeMillis();
                 Prescription prescription = new Prescription();
-                prescription.doMain(100000,10);
+                prescription.doMain(100000, 10);
                 long end = System.currentTimeMillis();
 
-                System.out.println("处方耗时："+(end-start));
+                System.out.println("处方耗时：" + (end - start));
             }
         }).start();
 
@@ -75,12 +73,11 @@ public class WCDBService extends Service {
                 Commondity commondity = new Commondity();
                 commondity.doMain(100000);
                 long end = System.currentTimeMillis();
-                System.out.println("药品耗时："+(end-start));
+                System.out.println("药品耗时：" + (end - start));
             }
         }).start();
 
     }
-
 
 
     @Override
@@ -88,7 +85,9 @@ public class WCDBService extends Service {
         super.onDestroy();
     }
 
-    //此方法是为了可以在Acitity中获得服务的实例
+    /**
+     * 此方法是为了可以在Acitity中获得服务的实例
+     */
     public class ServiceBinder extends Binder {
         public WCDBService getService() {
             return WCDBService.this;

@@ -30,15 +30,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class CountService extends Service {
-    /**
-     * 创建参数
-     */
-    boolean threadDisable = true;
-    int count;
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO Auto-generated method stub
         System.out.println("onBind.....");
         IBinder result = null;
         if (null == result) result = new ServiceBinder();
@@ -56,9 +50,7 @@ public class CountService extends Service {
             new ArrayBlockingQueue<Runnable>(5));
 
     public void startInsertData() {
-
         long startAll = System.currentTimeMillis();
-
         scheduledExecutorService.execute(() -> {
             long start = System.currentTimeMillis();
             Patient patient = new Patient();
@@ -148,11 +140,12 @@ public class CountService extends Service {
             SQLiteDatabase sqLiteDatabase = PbPatientDBManager.getInstance().openDatabase();
             String sqlindex = "SELECT id FROM pb_patient ORDER BY random();";
             Cursor cursorindex = sqLiteDatabase.rawQuery(sqlindex, null);
-            List<String> patientId = new ArrayList();
+            List<String> patientId = new ArrayList<>();
             while (cursorindex.moveToNext()) {
                 String anInt = cursorindex.getString(0);
                 patientId.add(anInt);
             }
+            cursorindex.close();
             long start = System.currentTimeMillis();
 
             for (int i = 0; i < patientId.size(); i++) {
@@ -300,8 +293,6 @@ public class CountService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        /** 服务停止时，终止计数进程 */
-        this.threadDisable = true;
     }
 
     public void execSql(List<String> dataList, List<String> dataListName,String sql) {
@@ -353,8 +344,9 @@ public class CountService extends Service {
         });
     }
 
-//此方法是为了可以在Acitity中获得服务的实例
-
+    /**
+     * 此方法是为了可以在Acitity中获得服务的实例
+     */
     public class ServiceBinder extends Binder {
         public CountService getService() {
             return CountService.this;

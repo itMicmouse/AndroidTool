@@ -25,7 +25,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +35,6 @@ public class DBActivity extends Activity {
 
     private CheckBox cb_patient;
     private CheckBox cb_commondity;
-    private CheckBox cb_prescription;
     private CheckBox cb_lable;
 
     private EditText et_sql;
@@ -53,16 +51,14 @@ public class DBActivity extends Activity {
         tv_result = findViewById(R.id.tv_result);
         cb_patient = findViewById(R.id.cb_patient);
         cb_commondity = findViewById(R.id.cb_commondity);
-        cb_prescription = findViewById(R.id.cb_prescription);
         cb_lable = findViewById(R.id.cb_lable);
         et_sql = findViewById(R.id.et_sql);
         tv_result.setMovementMethod(ScrollingMovementMethod.getInstance());
 
     }
 
-    public void opensettting(View view) {
+    public void initData(View view) {
         if (countService != null) {
-//            countService.startInsertData();
             List<String> dataList = new ArrayList<>();
             List<String> dataListName = new ArrayList<>();
             if(cb_patient.isChecked()){
@@ -72,7 +68,6 @@ public class DBActivity extends Activity {
             if(cb_commondity.isChecked()){
                 dataList.add("commoditymain.db");
                 dataListName.add("commoditymain");
-
             }
             if(cb_lable.isChecked()){
                 dataList.add("label.db");
@@ -96,14 +91,12 @@ public class DBActivity extends Activity {
         /** 获取服务对象时的操作 */
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            // TODO Auto-generated method stub
             countService = ((CountService.ServiceBinder) service).getService();
         }
 
         /** 无法获取到服务对象时的操作 */
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            // TODO Auto-generated method stub
             countService = null;
         }
 

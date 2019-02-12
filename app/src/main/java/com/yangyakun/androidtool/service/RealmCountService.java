@@ -6,51 +6,48 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.widget.Toast;
 
-import com.yangyakun.androidtool.db.realmdomain.Commondity;
 import com.yangyakun.androidtool.db.realmdomain.Patitent;
 import com.yangyakun.androidtool.db.realmdomain.PrescriptionDetails;
 import com.yangyakun.androidtool.db.realmdomain.PrescriptionMain;
 import com.yangyakun.androidtool.db.realmdomain.SysLabelDetails;
 import com.yangyakun.androidtool.db.realmdomain.SysLabelMain;
+import com.yangyakun.androidtool.db.realmdomain.TestABC;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import io.realm.Realm;
 import io.realm.RealmList;
 
 public class RealmCountService extends Service {
-    /**
-     * 创建参数
-     */
-    boolean threadDisable =true;
-    int count;
 
     @Override
     public IBinder onBind(Intent intent) {
         // TODO Auto-generated method stub
         System.out.println("onBind.....");
-        IBinder result = null;
-        if ( null == result ) result = new ServiceBinder() ;
-        Toast.makeText(this, "onBind",Toast.LENGTH_LONG);
+        IBinder result = new ServiceBinder() ;
+        Toast.makeText(this, "onBind",Toast.LENGTH_LONG).show();
         return result;
     }
 
     @Override
     public void onCreate() {
-        // get the Rx variant of the note DAO
         super.onCreate();
     }
     public void startInsertData(){
-        long startTime = System.currentTimeMillis();
         //插入药品
         Realm realm = Realm.getDefaultInstance();
+        List<TestABC> array = new ArrayList<>();
+        TestABC commondity;
+        for (int i = 0; i < 100000000; i++) {
+            commondity = realm.createObject(TestABC.class);
+            commondity.setId(UUID.randomUUID().toString());
+            array.add(commondity);
+        }
+        long startTime = System.currentTimeMillis();
         realm.executeTransactionAsync(bgRealm -> {
-            Commondity commondity;
-            for (int i = 0; i < 100000; i++) {
-                commondity = new Commondity();
-                commondity.setId(UUID.randomUUID().toString());
-                bgRealm.insert(commondity);
-            }
+            bgRealm.insert(array);
         }, () -> {
             System.out.println("成功药品"+(System.currentTimeMillis()-startTime));
         }, error -> {
@@ -60,7 +57,7 @@ public class RealmCountService extends Service {
         //插入患者
         realm.executeTransactionAsync(bgRealm -> {
             Patitent patitent;
-            for (int i = 0; i < 100000; i++) {
+            for (int i = 0; i < 1000000; i++) {
                 patitent = new Patitent();
                 patitent.setUserName(patitent.getName());
                 patitent.setId(UUID.randomUUID().toString());
@@ -129,16 +126,11 @@ public class RealmCountService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        /** 服务停止时，终止计数进程 */
-        this.threadDisable = true;
     }
 
-    public int getConunt() {
-        return count;
-    }
-
-//此方法是为了可以在Acitity中获得服务的实例
-
+    /**
+     * 此方法是为了可以在Acitity中获得服务的实例
+     */
     public class ServiceBinder extends Binder {
         public RealmCountService getService() {
             return RealmCountService.this;

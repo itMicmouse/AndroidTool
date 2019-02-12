@@ -12,7 +12,6 @@
 
     <uses-feature android:name="android.hardware.usb.host" />
 
-
     <application
         android:name=".app.BaseApplication"
         android:allowBackup="true"
@@ -33,11 +32,9 @@
                 <!-- <category android:name="android.intent.category.DEFAULT"/> -->
             </intent-filter>
         </activity>
-        <activity android:name=".activity.FlexboxActivity" />
         <activity android:name=".activity.RecycleViewActivity" />
         <activity android:name=".activity.MonitorActivity" />
         <activity android:name=".activity.RecycleViewDoubleActivity" />
-        <activity android:name=".activity.NEtTestActivity" />
         <activity android:name=".activity.MdnsActivity" />
         <activity android:name=".activity.AudioManagerActivity" />
         <activity android:name=".activity.DbRealmActivity" />
@@ -71,10 +68,8 @@
         <activity android:name=".activity.TracerouteActivity" />
         <activity android:name=".activity.TracerouteLinuxActivity" />
         <activity android:name=".activity.EmailActivity" />
-        <activity android:name=".activity.WifiSetting" />
-        <activity android:name=".file.FileActivity" />
-        <activity android:name=".activity.ViewPagerActivity" />
-        <activity android:name=".activity.RetrofitActivity"></activity>
+        <activity android:name=".activity.RetrofitActivity" />
+        <activity android:name=".activity.ViewActivity"></activity>
     </application>
 
 </manifest>
