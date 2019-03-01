@@ -65,6 +65,13 @@
         <activity android:name=".activity.EmailActivity" />
         <activity android:name=".activity.RetrofitActivity" />
         <activity android:name=".activity.ViewActivity"/>
+        <receiver android:name=".receiver.WifiReceiver">
+            <intent-filter >
+                <action android:name="android.net.wifi.RSSI_CHANGED"/>
+                <action android:name="android.net.wifi.STATE_CHANGE"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
