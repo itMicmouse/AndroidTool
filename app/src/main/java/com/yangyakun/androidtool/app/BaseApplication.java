@@ -96,10 +96,6 @@ public class BaseApplication extends Application {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
         }
-
-        Realm.init(this);
-        RealmConfiguration config = new RealmConfiguration.Builder().name("yyk.realm").build();
-        Realm.setDefaultConfiguration(config);
     }
 
     /**

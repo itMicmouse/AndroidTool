@@ -18,4 +18,39 @@
         android:onClick="openFlexBox"
         android:text="变小" />
 
+
+   <EditText
+       android:id="@+id/et_hour"
+       android:hint="小时"
+       android:inputType="number"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/et_mines"
+        android:hint="分钟"
+        android:inputType="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_put_close"
+        android:onClick="onClose"
+        android:text="设置自动关机"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_put_open"
+        android:onClick="onOpen"
+        android:text="设置自动开机"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_clear"
+        android:onClick="onCear"
+        android:text="清理数据"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
