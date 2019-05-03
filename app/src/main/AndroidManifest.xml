@@ -72,6 +72,7 @@
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
             </intent-filter>
         </receiver>
+        <activity android:name=".activity.QrActivity"/>
     </application>
 
 </manifest>
