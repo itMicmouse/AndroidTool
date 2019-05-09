@@ -3,6 +3,7 @@ package com.yangyakun.androidtool.view.canvas;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -69,11 +70,32 @@ public class TransformView extends View {
 //        canvas.drawRect(400,400,900,900,paint);
 
         //倾斜值
-        canvas.drawRect(0,0,400,400,paint);
-//        canvas.skew(1,0);//在x轴上倾斜45度
-        canvas.skew(0,1);//在y轴上倾斜45度
-        paint.setColor(Color.GRAY);
-        canvas.drawRect(0,0,400,400,paint);
+//        canvas.drawRect(0,0,400,400,paint);
+////        canvas.skew(1,0);//在x轴上倾斜45度
+//        canvas.skew(0,1);//在y轴上倾斜45度
+//        paint.setColor(Color.GRAY);
+//        canvas.drawRect(0,0,400,400,paint);
+
+//        canvas.drawRect(200,200,700,700,paint);
+//        paint.setColor(Color.GRAY);
+//        canvas.drawRect(200,800,700,1300,paint);
+//        canvas.clipRect(200,200,700,700);
+//        canvas.drawCircle(100,100,100,paint);
+//        canvas.drawCircle(300,300,100,paint);
+
+//        canvas.drawRect(200,200,700,700,paint);
+//        paint.setColor(Color.GRAY);
+//        canvas.drawRect(200,800,700,1300,paint);
+//        canvas.clipOutRect(200,200,700,700);
+//        canvas.drawCircle(100,100,100,paint);
+//        canvas.drawCircle(300,300,100,paint);
+
+        //矩阵
+        Matrix matrix = new Matrix();
+        matrix.setTranslate(50,50);
+        matrix.setRotate(45);
+        canvas.setMatrix(matrix);
+        canvas.drawRect(200,200,700,700,paint);
 
     }
 }
