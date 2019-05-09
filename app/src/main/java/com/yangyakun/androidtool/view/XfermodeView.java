@@ -12,10 +12,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.yangyakun.androidtool.db.domain.Patient;
-
-import java.security.MessageDigest;
-
 public class XfermodeView extends View {
 
     private Paint mPaint;
