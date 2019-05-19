@@ -1,4 +1,4 @@
-package com.yangyakun.androidtool.recycleview;
+package com.yangyakun.androidtool.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

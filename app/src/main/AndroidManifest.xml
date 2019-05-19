@@ -42,7 +42,7 @@
         <activity android:name=".activity.DBActivity" />
         <activity android:name=".activity.WCDBActivity" />
 
-        <receiver android:name=".recycleview.UsbBroadcastReceiver">
+        <receiver android:name=".receiver.UsbBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>

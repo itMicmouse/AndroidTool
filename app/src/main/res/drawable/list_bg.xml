@@ -7,7 +7,7 @@
         <item android:state_pressed="true">
            
             <shape>
-                <solid android:color="@color/orange" />
+                <solid android:color="@color/orange1" />
 
                 <corners
                     android:bottomLeftRadius="7.0dip"
