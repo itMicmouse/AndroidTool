@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
     public void testView(View view) {
-        Intent intent = new Intent(MainActivity.this, ViewActivity.class);
+        Intent intent = new Intent(MainActivity.this, RecycleViewActivity.class);
         startActivity(intent);
     }
     public void testQr(View view) {

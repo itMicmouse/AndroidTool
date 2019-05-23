@@ -6,11 +6,11 @@
     android:clickable="true"
     android:layout_height="match_parent">
 
-    <com.yangyakun.androidtool.recycleview.RecycleView
+    <com.yangyakun.androidtool.recycleview.widget.RecyclerView
         android:id="@+id/table"
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.yangyakun.androidtool.recycleview.RecycleView>
+    </com.yangyakun.androidtool.recycleview.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>
