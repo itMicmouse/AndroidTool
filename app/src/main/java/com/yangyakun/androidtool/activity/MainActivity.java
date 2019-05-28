@@ -7,6 +7,7 @@ import android.provider.Settings;
 import android.view.View;
 
 import com.yangyakun.androidtool.R;
+import com.yangyakun.androidtool.fragment.Mine_Screen_Manager_Fragment;
 
 /**
  * @author 92155
@@ -70,5 +71,10 @@ public class MainActivity extends Activity {
     public void testQr(View view) {
         Intent intent = new Intent(MainActivity.this, QrActivity.class);
         startActivity(intent);
+    }
+
+    public void testWebView(View view) {
+        Mine_Screen_Manager_Fragment yyl = Mine_Screen_Manager_Fragment.newInstance("杨亚坤");
+        yyl.show(getFragmentManager(),"yyl");
     }
 }

@@ -58,4 +58,6 @@ dependencies {
 
     implementation "org.java-websocket:Java-WebSocket:1.4.0"
 
+    implementation 'com.just.agentweb:agentweb:4.0.3-beta' // (必选)
+
 }
