@@ -4,23 +4,16 @@ import android.net.nsd.NsdServiceInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.stealthcopter.networktools.IPTools;
-import com.stealthcopter.networktools.Ping;
-import com.stealthcopter.networktools.ping.PingResult;
-import com.stealthcopter.networktools.ping.PingStats;
 import com.yangyakun.androidtool.R;
 import com.yangyakun.androidtool.utils.ChatConnection;
 import com.yangyakun.androidtool.utils.NsdHelper;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 /**
  * @author 92155

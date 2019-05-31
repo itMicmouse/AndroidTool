@@ -9,19 +9,14 @@ import android.graphics.Color;
 import android.graphics.ComposeShader;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.PorterDuff;
-import android.graphics.RadialGradient;
 import android.graphics.Shader;
-import android.graphics.SweepGradient;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.yangyakun.androidtool.R;
-import com.yangyakun.androidtool.utils.Utils;
-
-import java.util.logging.SocketHandler;
 
 public class TextView extends View {
 

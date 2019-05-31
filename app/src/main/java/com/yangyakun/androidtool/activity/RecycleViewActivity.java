@@ -1,18 +1,14 @@
 package com.yangyakun.androidtool.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.yangyakun.androidtool.R;
 import com.yangyakun.androidtool.adapter.MainRecycleViewAdapter;
-import com.yangyakun.androidtool.recycleview.widget.LinearLayoutManager;
-import com.yangyakun.androidtool.recycleview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecycleViewActivity extends AppCompatActivity {
 
@@ -31,7 +27,7 @@ public class RecycleViewActivity extends AppCompatActivity {
         MainRecycleViewAdapter mainRecycleViewAdapter = new MainRecycleViewAdapter(list);
         viewById.setAdapter(mainRecycleViewAdapter);
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(RecycleViewActivity.this
-                ,LinearLayoutManager.VERTICAL,false);
+                ,RecyclerView.VERTICAL,false);
         viewById.setLayoutManager(linearLayoutManager);
     }
 }

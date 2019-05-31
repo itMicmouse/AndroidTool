@@ -5,8 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.yangyakun.androidtool.R;
-import com.yangyakun.androidtool.recycleview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
