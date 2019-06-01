@@ -91,4 +91,10 @@
         android:onClick="testWebView"
         android:text="网站测试" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="testGlide"
+        android:text="网站Glide" />
+
 </com.google.android.flexbox.FlexboxLayout>

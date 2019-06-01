@@ -77,4 +77,9 @@ public class MainActivity extends Activity {
         Mine_Screen_Manager_Fragment yyl = Mine_Screen_Manager_Fragment.newInstance("杨亚坤");
         yyl.show(getFragmentManager(),"yyl");
     }
+
+    public void testGlide(View view) {
+        Intent intent = new Intent(MainActivity.this, GlideActivity.class);
+        startActivity(intent);
+    }
 }
