@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.yangyakun.androidtool.R;
 import com.yangyakun.androidtool.fragment.Mine_Screen_Manager_Fragment;
+import com.yangyakun.androidtool.glide.GlideActivity;
 
 /**
  * @author 92155

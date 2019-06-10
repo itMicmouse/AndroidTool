@@ -1,4 +1,4 @@
-package com.yangyakun.androidtool.activity;
+package com.yangyakun.androidtool.glide;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,5 +25,9 @@ public class GlideActivity extends AppCompatActivity {
     public void loadImage(View view) {
         String url = "http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg";
         Glide.with(this).load(url).into(imageView);
+    }
+
+    public void clearLoadImage(View view) {
+        Glide.with(this).clear(imageView);
     }
 }
