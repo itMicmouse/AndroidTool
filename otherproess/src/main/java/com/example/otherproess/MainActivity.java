@@ -39,4 +39,9 @@ public class MainActivity extends AppCompatActivity {
         },1);
 
     }
+
+    public void mDns(View view) {
+        Intent intent = new Intent(MainActivity.this, MdnsActivity.class);
+        startActivity(intent);
+    }
 }

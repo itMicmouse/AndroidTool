@@ -1,24 +1,8 @@
-/*
- * Copyright (C) 2012 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package com.yangyakun.androidtool.utils;
+package com.example.otherproess;
 
 import android.content.Context;
-import android.net.nsd.NsdServiceInfo;
 import android.net.nsd.NsdManager;
+import android.net.nsd.NsdServiceInfo;
 import android.util.Log;
 
 /**
@@ -73,9 +57,7 @@ public class NsdHelper {
                 Log.d(TAG, "发现服务-服务内容:" + service);
                 if (!service.getServiceType().equals(SERVICE_TYPE)) {
                     Log.d(TAG, "服务类型: " + service.getServiceType());
-                } else if (service.getServiceName().equals(mServiceName)) {
-                    Log.d(TAG, "相同的服务: " + mServiceName);
-                } else if (mServiceName.contains(service.getServiceName())) {
+                } else if (mServiceName.equals(service.getServiceName())) {
                     Log.d(TAG, "需要的服务: " + mServiceName);
                     mNsdManager.resolveService(service, mResolveListener);
                 }
@@ -117,13 +99,8 @@ public class NsdHelper {
             @Override
             public void onServiceResolved(NsdServiceInfo serviceInfo) {
                 Log.e(TAG, "链接成功-链接信息: " + serviceInfo);
-
-                //根据名称是否相等来判断
-                if (serviceInfo.getServiceName().equals(mServiceName)) {
-                    Log.d(TAG, "同一台机器.");
-                    return;
-                }
                 mService = serviceInfo;
+                Log.e(TAG, "链接信息"+mService.toString());
             }
         };
     }
@@ -156,7 +133,6 @@ public class NsdHelper {
     }
 
     public void registerService(int port) {
-        Log.e(TAG, "registerService: 注册服务");
         tearDown();  // Cancel any previous registration request
         initializeRegistrationListener();
         NsdServiceInfo serviceInfo = new NsdServiceInfo();

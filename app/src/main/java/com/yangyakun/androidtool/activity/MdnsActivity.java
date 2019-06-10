@@ -1,18 +1,12 @@
 package com.yangyakun.androidtool.activity;
 
-import android.net.nsd.NsdServiceInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.yangyakun.androidtool.R;
-import com.yangyakun.androidtool.utils.ChatConnection;
 import com.yangyakun.androidtool.utils.NsdHelper;
 
 /**
@@ -22,74 +16,28 @@ public class MdnsActivity extends AppCompatActivity {
 
     NsdHelper mNsdHelper;
 
-    private TextView mStatusView;
-    private Handler mUpdateHandler;
-
     public static final String TAG = "NsdChat";
-
-    ChatConnection mConnection;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "Creating chat activity");
         setContentView(R.layout.activity_mdns);
-        mStatusView = (TextView) findViewById(R.id.status);
-
-        mUpdateHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                String chatLine = msg.getData().getString("msg");
-                addChatLine(chatLine);
-            }
-        };
-
     }
 
     public void clickAdvertise(View v) {
         // Register service
-        if(mConnection.getLocalPort() > -1) {
-            mNsdHelper.registerService(mConnection.getLocalPort());
-        } else {
-            Log.d(TAG, "ServerSocket isn't bound.");
-        }
+        mNsdHelper.registerService(8888);
     }
 
     public void clickDiscover(View v) {
         mNsdHelper.discoverServices();
     }
 
-    public void clickConnect(View v) {
-        NsdServiceInfo service = mNsdHelper.getChosenServiceInfo();
-        if (service != null) {
-            Log.d(TAG, "Connecting.");
-            mConnection.connectToServer(service.getHost(),
-                    service.getPort());
-        } else {
-            Log.d(TAG, "No service to connect to!");
-        }
-    }
-
-    public void clickSend(View v) {
-        EditText messageView = (EditText) this.findViewById(R.id.chatInput);
-        if (messageView != null) {
-            String messageString = messageView.getText().toString();
-            if (!messageString.isEmpty()) {
-                mConnection.sendMessage(messageString);
-            }
-            messageView.setText("");
-        }
-    }
-
-    public void addChatLine(String line) {
-        mStatusView.append("\n" + line);
-    }
 
     @Override
     protected void onStart() {
         Log.d(TAG, "Starting.");
-        mConnection = new ChatConnection(mUpdateHandler);
-
         mNsdHelper = new NsdHelper(this);
         mNsdHelper.initializeNsd();
         super.onStart();
@@ -118,9 +66,7 @@ public class MdnsActivity extends AppCompatActivity {
     protected void onStop() {
         Log.d(TAG, "Being stopped.");
         mNsdHelper.tearDown();
-        mConnection.tearDown();
         mNsdHelper = null;
-        mConnection = null;
         super.onStop();
     }
 
