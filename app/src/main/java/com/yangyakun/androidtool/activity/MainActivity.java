@@ -83,4 +83,8 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, GlideActivity.class);
         startActivity(intent);
     }
+    public void testViewPager2(View view) {
+        Intent intent = new Intent(MainActivity.this, ViewPager2Activity.class);
+        startActivity(intent);
+    }
 }
