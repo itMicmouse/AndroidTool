@@ -87,4 +87,8 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, ViewPager2Activity.class);
         startActivity(intent);
     }
+    public void testWebSocket(View view) {
+        Intent intent = new Intent(MainActivity.this, WebSocketActivity.class);
+        startActivity(intent);
+    }
 }

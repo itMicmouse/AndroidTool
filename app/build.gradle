@@ -66,5 +66,7 @@ dependencies {
 
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha05'
 
+    implementation 'com.wuyr:pathlayoutmanager:1.0.3'
+
 
 }

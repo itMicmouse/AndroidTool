@@ -1,5 +1,6 @@
 package com.yangyakun.androidtool.activity;
 
+import android.graphics.Path;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yangyakun.androidtool.R;
 import com.yangyakun.androidtool.adapter.MainRecycleViewAdapter;
+import com.yangyakun.androidtool.layoutmanager.PathLayoutManager;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,17 @@ public class RecycleViewActivity extends AppCompatActivity {
         }
         MainRecycleViewAdapter mainRecycleViewAdapter = new MainRecycleViewAdapter(list);
         viewById.setAdapter(mainRecycleViewAdapter);
-        LinearLayoutManager linearLayoutManager= new LinearLayoutManager(RecycleViewActivity.this
+
+        Path path = new Path();
+        path.moveTo(250,250);
+        path.rLineTo(600,300);
+        path.rLineTo(-600,300);
+        path.rLineTo(600,300);
+        path.rLineTo(-600,300);
+
+        PathLayoutManager linearLayoutManager= new PathLayoutManager(path,150);
+
+        LinearLayoutManager linearLayoutManager1= new LinearLayoutManager(RecycleViewActivity.this
                 ,RecyclerView.VERTICAL,false);
         viewById.setLayoutManager(linearLayoutManager);
     }

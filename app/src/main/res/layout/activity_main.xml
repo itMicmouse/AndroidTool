@@ -101,5 +101,10 @@
         android:layout_height="wrap_content"
         android:onClick="testViewPager2"
         android:text="ViewPage2" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="testWebSocket"
+        android:text="testWebsocket" />
 
 </com.google.android.flexbox.FlexboxLayout>
