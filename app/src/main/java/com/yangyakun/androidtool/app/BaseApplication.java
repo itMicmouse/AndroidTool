@@ -7,6 +7,9 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.StrictMode;
 
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
+
 import com.yangyakun.androidtool.db.dbmanage.PbCommodityMainDBManager;
 import com.yangyakun.androidtool.db.dbmanage.PbPatientDBManager;
 import com.yangyakun.androidtool.db.dbmanage.PbPrescriptionDBManager;
@@ -37,7 +40,7 @@ import io.github.skyhacker2.sqliteonweb.SQLiteOnWeb;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-public class BaseApplication extends Application {
+public class BaseApplication extends MultiDexApplication {
 
     /**
      * 获取到主线程的handler
@@ -122,5 +125,11 @@ public class BaseApplication extends Application {
 
     public static Application getInstance() {
         return mApplication;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

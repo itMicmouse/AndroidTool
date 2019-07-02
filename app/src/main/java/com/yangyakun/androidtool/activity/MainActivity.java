@@ -91,4 +91,16 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(MainActivity.this, WebSocketActivity.class);
         startActivity(intent);
     }
+
+    public void testAIDL(View view) {
+        Intent intent = new Intent(MainActivity.this,
+                AidlActivity.class);
+        startActivity(intent);
+    }
+
+    public void testOpenClose(View view) {
+        Intent intent = new Intent(MainActivity.this,
+                OpenCloseActivity.class);
+        startActivity(intent);
+    }
 }

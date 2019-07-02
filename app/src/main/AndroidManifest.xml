@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.WebSocketActivity"></activity>
+        <activity android:name=".activity.OpenCloseActivity"></activity>
+        <activity android:name=".activity.AidlActivity" />
+        <activity android:name=".activity.WebSocketActivity" />
         <activity android:name=".activity.ViewPager2Activity" />
         <activity android:name=".glide.GlideActivity" />
         <activity
@@ -77,6 +79,13 @@
         </receiver>
 
         <activity android:name=".activity.QrActivity" />
+        <activity android:name=".service.RemoteService$Controller" />
+        <activity android:name=".service.RemoteService$Binding" />
+        <activity android:name=".service.RemoteService$BindingOptions" />
+
+        <service
+            android:name=".service.RemoteService"
+            android:process=":service1" />
     </application>
 
 </manifest>
