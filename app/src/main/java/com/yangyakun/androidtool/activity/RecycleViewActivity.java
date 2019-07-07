@@ -23,8 +23,8 @@ public class RecycleViewActivity extends AppCompatActivity {
         RecyclerView viewById = findViewById(R.id.table);
         viewById.setClickable(true);
         ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            list.add(i+"1");
+        for (int i = 0; i < 300; i++) {
+            list.add(i+"");
         }
         MainRecycleViewAdapter mainRecycleViewAdapter = new MainRecycleViewAdapter(list);
         viewById.setAdapter(mainRecycleViewAdapter);
