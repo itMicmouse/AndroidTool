@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.HandlerActivity"></activity>
+        <activity android:name=".animation.AnimationActivity"></activity>
+        <activity android:name=".mvc.MVCActivity" />
+        <activity android:name=".activity.HandlerActivity" />
         <activity android:name=".activity.OpenCloseActivity" />
         <activity android:name=".activity.AidlActivity" />
         <activity android:name=".activity.WebSocketActivity" />
