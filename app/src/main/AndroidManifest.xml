@@ -19,10 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".animation.AnimationActivity"></activity>
+        <activity android:name=".animation.AnimationActivity"/>
         <activity android:name=".mvc.MVCActivity" />
         <activity android:name=".activity.HandlerActivity" />
-        <activity android:name=".activity.OpenCloseActivity" />
         <activity android:name=".activity.AidlActivity" />
         <activity android:name=".activity.WebSocketActivity" />
         <activity android:name=".activity.ViewPager2Activity" />
@@ -40,10 +39,8 @@
         <activity android:name=".activity.MonitorActivity" />
         <activity android:name=".activity.MdnsActivity" />
         <activity android:name=".activity.AudioManagerActivity" />
-        <activity android:name=".activity.DbRealmActivity" />
 
         <service android:name=".service.CountService" />
-        <service android:name=".service.RealmCountService" />
         <service android:name=".service.WCDBService" />
 
         <activity android:name=".activity.DBActivity" />

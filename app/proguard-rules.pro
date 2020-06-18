@@ -82,10 +82,6 @@
      <init>(...);
 }
 
-# AndroidGodEye
--keep class cn.hikyson.godeye.** {*;}
-
-
 
 # 代码混淆压缩比，在0和7之间，默认为5，一般不需要改
 -optimizationpasses 5

@@ -59,12 +59,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="testRealm"
-        android:text="realm" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:onClick="wcdbDemo"
         android:text="wcDb测试" />
 
@@ -116,6 +110,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="testOpenClose"
-        android:text="testOC" />
+        android:text="打开LocalServer" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="getLocalIp"
+        android:text="获取本地ip" />
 
 </com.google.android.flexbox.FlexboxLayout>
